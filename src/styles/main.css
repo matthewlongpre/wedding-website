@@ -22,6 +22,10 @@ body {
   height: 100%;
 }
 
+.text-uppercase {
+  text-transform: uppercase;
+}
+
 .flex {
   display: flex;
 }
@@ -64,9 +68,16 @@ body {
   padding-bottom: 0.5rem;
 }
 
-.nav li a {
+nav li a {
   display: block;
   padding: 1rem 0.5rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+ul.isDesktop li a {
+  padding: 1rem 0.5rem;
+  display: block;
 }
 
 /* Position and sizing of burger button */

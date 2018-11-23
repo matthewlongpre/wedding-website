@@ -11,7 +11,7 @@ class Nav extends React.Component {
     }
     render() {
         return (
-            <ul className={`list-style-none flex m-0 p-0`}>
+            <ul className={`list-style-none flex m-0 p-0 text-uppercase ${this.props.isDesktop ? "isDesktop justify-content-center" : "flex-direction-column"}`}>
                 <li>
                     <Link onClick={(e) => this._closeMenu(e)} to="/">Wedding</Link>
                 </li>
@@ -20,6 +20,9 @@ class Nav extends React.Component {
                 </li>
                 <li>
                     <Link to="/gifts/">Gifts</Link>
+                </li>
+                <li>
+                    <Link to="/rsvp/">RSVP</Link>
                 </li>
             </ul>
         );

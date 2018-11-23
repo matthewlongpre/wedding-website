@@ -16,7 +16,9 @@ class SlideMenu extends React.Component {
                     </Menu>
                 </Media>
                 <Media query="(min-width: 1024px)">
-                    <Nav isDesktop />
+                    <nav>
+                        <Nav isDesktop />
+                    </nav>
                 </Media>
             </div>
         );

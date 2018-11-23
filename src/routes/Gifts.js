@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const Gifts = () => {
     return (
-        <div className="flex flex-direction-column justify-content-center align-items-center">
+        <div className="w-100 h-100 flex flex-direction-column justify-content-center align-items-center">
             <h1>No presents, please. Just your presence.</h1>
         </div>
     );

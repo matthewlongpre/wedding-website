@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import './App.css';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import SlideMenu from './SlideMenu.js';
-import Home from './Home';
-import Location from './Location';
-import Gifts from './Gifts';
+import React from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import SlideMenu from './components/SlideMenu.js';
+import Home from './routes/Home';
+import Location from './routes/Location';
+import Gifts from './routes/Gifts';
+import RSVP from './routes/RSVP';
 
-const Users = () => <h2>Users</h2>;
+import './styles/main.css';
 
 class App extends React.Component {
     constructor(props) {
@@ -33,20 +33,22 @@ class App extends React.Component {
             menuOpen: !this.state.menuOpen
         });
     }
+
     render() {
         return (
-            <div className="App" id="outer-container">
+            <div className="App w-100 h-100" id="outer-container">
                 <Router>
                     <div className="w-100 h-100">
                         <SlideMenu menuOpen={this.state.menuOpen} _closeMenu={() => this._closeMenu()} />
-                        <main id="page-wrap">
+                        <main id="page-wrap" className="w-100 h-100">
                             <Route path="/" exact component={Home} />
                             <Route path="/location/" component={Location} />
                             <Route path="/gifts/" component={Gifts} />
+                            <Route path="/rsvp/" component={RSVP} />
                         </main>
                     </div>
                 </Router>
-            </div >
+            </div>
     );
     }
 };
