@@ -5,14 +5,16 @@ import Home from './routes/Home';
 import Location from './routes/Location';
 import Gifts from './routes/Gifts';
 import RSVP from './routes/RSVP';
-
 import './styles/main.css';
+
+import { AppContextProvider } from './components/AppContext';
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            menuOpen: false
+            menuOpen: false,
+            background: 1
         }
     }
 
@@ -36,20 +38,23 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="App w-100 h-100" id="outer-container">
-                <Router>
-                    <div className="w-100 h-100">
-                        <SlideMenu menuOpen={this.state.menuOpen} _closeMenu={() => this._closeMenu()} />
-                        <main id="page-wrap" className="w-100 h-100">
-                            <Route path="/" exact component={Home} />
-                            <Route path="/location/" component={Location} />
-                            <Route path="/gifts/" component={Gifts} />
-                            <Route path="/rsvp/" component={RSVP} />
-                        </main>
-                    </div>
-                </Router>
-            </div>
-    );
+                <div className="App w-100 h-100" id="outer-container">
+                    <Router>
+                        <div className="w-100 h-100">
+                            <SlideMenu menuOpen={this.state.menuOpen} _closeMenu={() => this._closeMenu()} />
+                            <main id="page-wrap" className="w-100 h-100">
+                            <AppContextProvider value={this.state}>
+                                <Route path="/" exact component={Home} />
+                                <Route path="/location/" component={Location} />
+                                <Route path="/gifts/" component={Gifts}/>
+                                <Route path="/rsvp/" component={RSVP} />
+                            </AppContextProvider>
+
+                            </main>
+                        </div>
+                    </Router>
+                </div>
+        );
     }
 };
 
