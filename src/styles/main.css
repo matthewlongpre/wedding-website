@@ -311,12 +311,12 @@ nav li a {
   margin: auto;
 }
 
-.bg-fade .page-background {
+.bg-fade .page-home {
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
 
-.bg-fade-in .page-background {
+.bg-fade-in .page-home {
   opacity: 1;
 }
 

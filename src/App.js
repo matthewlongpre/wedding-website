@@ -28,7 +28,7 @@ class App extends React.Component {
     this.appContainerElement = null;
     this.webFontConfig = {
       custom: {
-        families: ['Raleway']
+        families: ['Raleway', 'Blithe']
       },
       timeout: 10000
     };
@@ -65,7 +65,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // console.log(Raleway);
     const homeBG = new Image();
     homeBG.src = homeBGUrl;
     homeBG.onload = () => {
@@ -77,8 +76,6 @@ class App extends React.Component {
   }
 
   handleWebFontLoad = (status) => {
-    console.log("handleWebFontLoad!");
-    console.log(status);
     if (status === "inactive") {
       this.setState({
         fontsLoaded: true
