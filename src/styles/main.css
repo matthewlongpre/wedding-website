@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,300i,700,700i');
 @font-face {
-  font-family: 'Actual';
-  src: url('../assets/actual-webfont.woff2') format('woff2'), url('../assets/actual-webfont.woff') format('woff');
+  font-family: 'Blithe';
+  src: url('../assets/blithe-webfont.woff2') format('woff2'), url('../assets/blithe-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
-.font-actual {
-  font-family: 'Actual';
+.font-blithe {
+  font-family: 'Blithe';
 }
 
-.f-2 {
-  font-size: 2rem;
+.f-3 {
+  font-size: 3rem;
 }
 
 html, body {
@@ -47,6 +47,14 @@ body {
 
 .text-italic {
   font-style: italic;
+}
+
+.letter-spacing-2 {
+  letter-spacing: 2px;
+}
+
+.f-1 {
+  font-size: 1rem;
 }
 
 /* .text-inverse, nav ul.text-inverse li a {
@@ -97,8 +105,20 @@ body {
   padding: 20px;
 }
 
+.p-40 {
+  padding: 40px;
+}
+
 .pt-3 {
   padding-top: 3rem;
+}
+
+.pb-3 {
+  padding-bottom: 3rem;
+}
+
+.pb-2 {
+  padding-bottom: 2rem;
 }
 
 .list-style-none {
@@ -122,7 +142,7 @@ nav li a {
 }
 
 .top-nav li a {
-  padding: 1rem 1.5rem;
+  padding: 2rem 1.5rem;
   display: block;
   color: #fff;
 }
@@ -150,8 +170,10 @@ nav li a {
 /* Position and sizing of clickable cross button */
 
 .bm-cross-button {
-  height: 24px;
-  width: 24px;
+  /* height: 36px !important;
+  width: 36px !important; */
+  right: 36px !important;
+  top: 36px !important;
 }
 
 /* Color/shape of close button cross */
@@ -204,10 +226,23 @@ nav li a {
 }
 
 .bg-1 {
-  background-position: -107vw center;
+  background-size: cover;
 }
 
-@media (min-width: 450px) {
+@media (max-width: 450px) {
+  .bg-1 {
+    background-position: -50vw center;
+    /* background-size: 400%; */
+  }
+}
+
+@media (min-width: 451px) and (max-width: 580px) {
+  .bg-1 {
+    background-position: -37vw center;
+  }
+}
+
+/* @media (min-width: 450px) {
   .bg-1 {
     background-position-x: -75vw;
   }
@@ -223,11 +258,11 @@ nav li a {
   .bg-1 {
     background-position-x: -33vw;
   }
-}
+} */
 
 .page-background::before {
   content: "";
-  background-color: rgba(0, 0, 0, 0.45);
+  background-color: rgba(0, 0, 0, 0.3);
   width: 100%;
   height: 100%;
   position: absolute;
@@ -264,6 +299,7 @@ nav li a {
 
 .button a {
   color: #fff;
+  background: rgba(255, 255, 255, 0.1);
   text-decoration: none;
   font-size: 1rem;
   padding: 1rem 2rem;
@@ -272,5 +308,5 @@ nav li a {
 }
 
 .button a:hover {
-  background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.3);
 }

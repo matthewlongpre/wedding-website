@@ -43,13 +43,12 @@ class App extends React.Component {
                         <div className="w-100 h-100">
                             <SlideMenu menuOpen={this.state.menuOpen} _closeMenu={() => this._closeMenu()} />
                             <main id="page-wrap" className="w-100 h-100">
-                            <AppContextProvider value={this.state}>
+                              <AppContextProvider value={this.state}>
                                 <Route path="/" exact component={Home} />
                                 <Route path="/location/" component={Location} />
                                 <Route path="/gifts/" component={Gifts}/>
                                 <Route path="/rsvp/" component={RSVP} />
-                            </AppContextProvider>
-
+                              </AppContextProvider>
                             </main>
                         </div>
                     </Router>
