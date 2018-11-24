@@ -3,11 +3,15 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SlideMenu from './components/SlideMenu.js';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
+import WebfontLoader from '@dr-kobros/react-webfont-loader';
+
 import Home from './routes/Home';
 import Location from './routes/Location';
 import Gifts from './routes/Gifts';
 import RSVP from './routes/RSVP';
 import './styles/main.css';
+
+import homeBGUrl from './assets/santorini-1.jpg';
 
 import { AppContextProvider } from './components/AppContext';
 
@@ -15,9 +19,19 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loaded: false,
+      bgLoaded: false,
+      fontsLoaded: false,
       menuOpen: false,
-      background: 1
+      svgLoaded: false
     }
+    this.appContainerElement = null;
+    this.webFontConfig = {
+      custom: {
+        families: ['Raleway']
+      },
+      timeout: 10000
+    };
   }
 
   _handleStateChange(state) {
@@ -38,39 +52,77 @@ class App extends React.Component {
     });
   }
 
+  svgLoaded() {
+    this.setState({
+      svgLoaded: true
+    });
+  }
+
+  setLoaded() {
+    this.setState({
+      loaded: true
+    });
+  }
+
+  componentDidMount() {
+    // console.log(Raleway);
+    const homeBG = new Image();
+    homeBG.src = homeBGUrl;
+    homeBG.onload = () => {
+      this.setState({
+        bgLoaded: true
+      });
+      this.appContainerElement.classList.add('bg-fade-in');
+    };
+  }
+
+  handleWebFontLoad = (status) => {
+    console.log("handleWebFontLoad!");
+    console.log(status);
+    if (status === "inactive") {
+      this.setState({
+        fontsLoaded: true
+      });
+    }
+  }
+
   render() {
+    const { loaded, fontsLoaded } = this.state;
+    // { if (!loaded) return <div></div> }
     return (
-      <div className="App w-100 h-100" id="outer-container">
-        <Router>
-          <div className="w-100 h-100">
-            <SlideMenu menuOpen={this.state.menuOpen} _closeMenu={() => this._closeMenu()} />
-            <main id="page-wrap" className="w-100 h-100">
-              <AppContextProvider value={this.state}>
-                <Route
-                  render={({ location }) => (
-                    <div>
-                      <TransitionGroup component={null}>
-                        <CSSTransition
-                          key={location.key}
-                          classNames="fade"
-                          timeout={500}
-                        >
-                          <Switch location={location} key="switch">
-                            <Route exact path="/" component={Home} key="home"/>
-                            <Route exact path="/location" component={Location} key="location" />
-                            <Route exact path="/gifts" component={Gifts} key="gifts" />
-                            <Route exact path="/rsvp" component={RSVP} key="rsvp" />
-                            <Route key="not-found" render={() => <div>Not Found</div>} />
-                          </Switch>
-                        </CSSTransition>
-                      </TransitionGroup>
-                    </div>
-                  )}
+      <div ref={appRef => this.appContainerElement = appRef} className={`App w-100 h-100 font-raleway bg-fade`} id="outer-container">
+        <WebfontLoader config={this.webFontConfig} onStatus={this.handleWebFontLoad}>
+          <Router>
+            <div className="w-100 h-100">
+              <SlideMenu menuOpen={this.state.menuOpen} _closeMenu={() => this._closeMenu()} />
+              <main id="page-wrap" className="w-100 h-100">
+                <AppContextProvider value={this.state}>
+                  <Route
+                    render={({ location }) => (
+                      <div>
+                        <TransitionGroup component={null}>
+                          <CSSTransition
+                            key={location.key}
+                            classNames="fade"
+                            timeout={333}
+                          >
+                            <Switch location={location} key="switch">
+                              <Route exact path="/" render={(props) => <Home svgLoaded={() => this.svgLoaded()} />} key="home" />
+                              <Route exact path="/location" component={Location} key="location" />
+                              <Route exact path="/gifts" component={Gifts} key="gifts" />
+                              <Route exact path="/rsvp" component={RSVP} key="rsvp" />
+                              <Route key="not-found" render={() => <div>Sorry, the page you're looking for could not be found.</div>} />
+                            </Switch>
+                          </CSSTransition>
+                        </TransitionGroup>
+                      </div>
+                    )}
                   />
-              </AppContextProvider>
-            </main>
-          </div>
-        </Router>
+                </AppContextProvider>
+              </main>
+            </div>
+          </Router>
+        </WebfontLoader>
       </div>
     );
   }
