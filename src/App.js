@@ -102,7 +102,7 @@ class App extends React.Component {
                             timeout={333}
                           >
                             <Switch location={location} key="switch">
-                              <Route exact path="/" render={(props) => <Home svgLoaded={() => this.svgLoaded()} />} key="home" />
+                              <Route exact path="/" render={() => <Home svgLoaded={() => this.svgLoaded()} />} key="home" />
                               <Route exact path="/location" component={Location} key="location" />
                               <Route exact path="/gifts" component={Gifts} key="gifts" />
                               <Route exact path="/rsvp" component={RSVP} key="rsvp" />
