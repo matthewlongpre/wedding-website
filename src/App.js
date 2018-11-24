@@ -13,6 +13,10 @@ import './styles/main.css';
 
 import homeBGUrl from './assets/santorini-1.jpg';
 
+import locationBGUrl from './assets/santorini-3.jpg';
+import giftsBGUrl from './assets/fort-common-3.jpg';
+
+
 import { AppContextProvider } from './components/AppContext';
 
 class App extends React.Component {
@@ -21,6 +25,7 @@ class App extends React.Component {
     this.state = {
       loaded: false,
       bgLoaded: false,
+      backgroundsLoaded: false,
       menuOpen: false,
       svgLoaded: false
     }
@@ -64,6 +69,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+
+    // change this to be the image of whatever route is loaded
     const homeBG = new Image();
     homeBG.src = homeBGUrl;
     homeBG.onload = () => {
@@ -72,6 +79,28 @@ class App extends React.Component {
       });
       this.appContainerElement.classList.add('bg-fade-in');
     };
+  }
+
+  componentDidUpdate() {
+    console.log('update');
+    if (this.state.bgLoaded && !this.state.backgroundsLoaded) {
+      // eventually just have the "other" bgs after the inital route bg
+      
+      const bgs = [this.loadImage(locationBGUrl), this.loadImage(giftsBGUrl)];
+      Promise.all(bgs).then(
+        this.setState({
+          backgroundsLoaded: true
+        })
+      );
+    }
+  }
+
+  loadImage = (url) => {
+    return new Promise((resolve, reject) => {
+      const image = new Image();
+      image.src = url;
+      image.onload = () => resolve(image);
+    });
   }
 
   handleWebFontLoad = (status) => {
