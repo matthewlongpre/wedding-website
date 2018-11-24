@@ -33,6 +33,11 @@ body {
   color: #fff;
 }
 
+#page-wrap>div, #page-wrap>div>div {
+  width: 100%;
+  height: 100%;
+}
+
 .w-100 {
   width: 100%;
 }
@@ -145,10 +150,15 @@ nav li a {
   padding: 2rem 1.5rem;
   display: block;
   color: #fff;
+  /* transition: font-weight 0.3s ease-in-out; */
 }
 
 .side-nav li a {
   color: #fff;
+}
+
+.is-active {
+  font-weight: 700;
 }
 
 /* Position and sizing of burger button */
@@ -309,4 +319,26 @@ nav li a {
 
 .button a:hover {
   background: rgba(255, 255, 255, 0.3);
+}
+
+.fade-enter {
+  opacity: 0.01;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: all 300ms ease-out;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0.01;
+  transition: all 300ms ease-out;
+}
+
+.isvg {
+  width: 100%;
 }
