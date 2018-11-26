@@ -28,25 +28,6 @@ class App extends React.Component {
       menuOpen: false,
       svgLoaded: false
     }
-    this.imagePreload = null;
-
-    this.backgroundImages = [
-      {
-        route: "/",
-        bg: homeBGUrl,
-        className: "bg-1"
-      },
-      {
-        route: "/location/",
-        bg: locationBGUrl,
-        className: "bg-4"
-      },
-      {
-        route: "/gifts/",
-        bg: giftsBGUrl,
-        className: "bg-3"
-      }
-    ]
 
     this.appContainerElement = null;
     this.webFontConfig = {
@@ -88,9 +69,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('APP comonentDidMount');
-
-    // change this to be the image of whatever route is loaded
     const homeBG = new Image();
     homeBG.src = homeBGUrl;
     homeBG.onload = () => {
@@ -106,10 +84,7 @@ class App extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log('update');
     if (this.state.bgLoaded && !this.state.backgroundsLoaded) {
-      // eventually just have the "other" bgs after the inital route bg
-
       const bgs = [
         this.loadImage(locationBGUrl),
         this.loadImage(giftsBGUrl)
@@ -174,8 +149,6 @@ class App extends React.Component {
                   />
                 </AppContextProvider>
               </main>
-              <div ref={ref => this.imagePreload = ref}>
-              </div>
             </div>
           </Router>
         </WebfontLoader>
