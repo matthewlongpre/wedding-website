@@ -311,11 +311,13 @@ nav li a {
   margin: auto;
 }
 
-/* fix this. conflicting with router animation */
+
+
 .initial-load .page-home {
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
+
 
 .initial-load-complete .page-home {
   opacity: 1;

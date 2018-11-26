@@ -15,7 +15,6 @@ import homeBGUrl from './assets/santorini-1.jpg';
 import locationBGUrl from './assets/santorini-3.jpg';
 import giftsBGUrl from './assets/fort-common-3.jpg';
 
-
 import { AppContextProvider } from './components/AppContext';
 
 class App extends React.Component {
@@ -32,8 +31,7 @@ class App extends React.Component {
     this.appContainerElement = null;
     this.webFontConfig = {
       custom: {
-        families: ['Raleway', 'Blithe']
-      },
+        families: ['Raleway', 'Blithe'],
       timeout: 10000
     };
   }
@@ -75,6 +73,7 @@ class App extends React.Component {
       this.setState({
         bgLoaded: true
       });
+
       this.appContainerElement.classList.add('initial-load-complete');
       setTimeout(() => {
         this.appContainerElement.classList.remove('initial-load');
@@ -107,11 +106,10 @@ class App extends React.Component {
       };
     });
   }
-
   render() {
-    const { loaded, backgroundsLoaded } = this.state;
+    const { loaded } = this.state;
     return (
-      <div ref={appRef => this.appContainerElement = appRef} className={`App w-100 h-100 font-raleway initial-load`} id="outer-container">
+      <div ref={appRef => this.appContainerElement = appRef} className={`App w-100 h-100 font-raleway bg-fade`} id="outer-container">
         <WebfontLoader config={this.webFontConfig} onStatus={this.handleWebFontLoad}>
           <Router>
             <div className="w-100 h-100">
@@ -128,6 +126,7 @@ class App extends React.Component {
                             timeout={333}
                           >
                             <Switch location={location} key="switch">
+
                               <Route exact path="/" render={() => <Home bgClass={(backgroundsLoaded ? "bg-1" : "")} svgLoaded={() => this.svgLoaded()} />} key="home" />
                               <Route exact path="/location" render={(props) => <Location bgClass={(backgroundsLoaded ? "bg-4" : "")}/>} key="location" />
                               <Route exact path="/gifts" render={(props) => <Gifts bgClass={(backgroundsLoaded ? "bg-3" : "")}/>} key="gifts" />
