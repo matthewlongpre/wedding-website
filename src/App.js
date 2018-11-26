@@ -108,14 +108,6 @@ class App extends React.Component {
     });
   }
 
-  handleWebFontLoad = (status) => {
-    if (status === "inactive") {
-      this.setState({
-        fontsLoaded: true
-      });
-    }
-  }
-
   render() {
     const { loaded, backgroundsLoaded } = this.state;
     return (
