@@ -31,7 +31,8 @@ class App extends React.Component {
     this.appContainerElement = null;
     this.webFontConfig = {
       custom: {
-        families: ['Raleway', 'Blithe'],
+        families: ['Raleway', 'Blithe']
+      },
       timeout: 10000
     };
   }
