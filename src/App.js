@@ -12,7 +12,6 @@ import RSVP from './routes/RSVP';
 import './styles/main.css';
 
 import homeBGUrl from './assets/santorini-1.jpg';
-
 import locationBGUrl from './assets/santorini-3.jpg';
 import giftsBGUrl from './assets/fort-common-3.jpg';
 
@@ -29,6 +28,26 @@ class App extends React.Component {
       menuOpen: false,
       svgLoaded: false
     }
+    this.imagePreload = null;
+
+    this.backgroundImages = [
+      {
+        route: "/",
+        bg: homeBGUrl,
+        className: "bg-1"
+      },
+      {
+        route: "/location/",
+        bg: locationBGUrl,
+        className: "bg-4"
+      },
+      {
+        route: "/gifts/",
+        bg: giftsBGUrl,
+        className: "bg-3"
+      }
+    ]
+
     this.appContainerElement = null;
     this.webFontConfig = {
       custom: {
@@ -69,6 +88,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log('APP comonentDidMount');
 
     // change this to be the image of whatever route is loaded
     const homeBG = new Image();
@@ -77,7 +97,11 @@ class App extends React.Component {
       this.setState({
         bgLoaded: true
       });
-      this.appContainerElement.classList.add('bg-fade-in');
+      this.appContainerElement.classList.add('initial-load-complete');
+      setTimeout(() => {
+        this.appContainerElement.classList.remove('initial-load');
+        this.appContainerElement.classList.remove('initial-load-complete');
+      }, 2000);
     };
   }
 
@@ -85,13 +109,17 @@ class App extends React.Component {
     console.log('update');
     if (this.state.bgLoaded && !this.state.backgroundsLoaded) {
       // eventually just have the "other" bgs after the inital route bg
-      
-      const bgs = [this.loadImage(locationBGUrl), this.loadImage(giftsBGUrl)];
-      Promise.all(bgs).then(
-        this.setState({
-          backgroundsLoaded: true
-        })
-      );
+
+      const bgs = [
+        this.loadImage(locationBGUrl),
+        this.loadImage(giftsBGUrl)
+      ];
+      Promise.all(bgs)
+        .then(
+          this.setState({
+            backgroundsLoaded: true
+          })
+        );
     }
   }
 
@@ -99,7 +127,9 @@ class App extends React.Component {
     return new Promise((resolve, reject) => {
       const image = new Image();
       image.src = url;
-      image.onload = () => resolve(image);
+      image.onload = () => {
+        resolve(image)
+      };
     });
   }
 
@@ -112,9 +142,9 @@ class App extends React.Component {
   }
 
   render() {
-    const { loaded } = this.state;
+    const { loaded, backgroundsLoaded } = this.state;
     return (
-      <div ref={appRef => this.appContainerElement = appRef} className={`App w-100 h-100 font-raleway bg-fade`} id="outer-container">
+      <div ref={appRef => this.appContainerElement = appRef} className={`App w-100 h-100 font-raleway initial-load`} id="outer-container">
         <WebfontLoader config={this.webFontConfig} onStatus={this.handleWebFontLoad}>
           <Router>
             <div className="w-100 h-100">
@@ -131,9 +161,9 @@ class App extends React.Component {
                             timeout={333}
                           >
                             <Switch location={location} key="switch">
-                              <Route exact path="/" render={() => <Home svgLoaded={() => this.svgLoaded()} />} key="home" />
-                              <Route exact path="/location" component={Location} key="location" />
-                              <Route exact path="/gifts" component={Gifts} key="gifts" />
+                              <Route exact path="/" render={() => <Home bgClass={(backgroundsLoaded ? "bg-1" : "")} svgLoaded={() => this.svgLoaded()} />} key="home" />
+                              <Route exact path="/location" render={(props) => <Location bgClass={(backgroundsLoaded ? "bg-4" : "")}/>} key="location" />
+                              <Route exact path="/gifts" render={(props) => <Gifts bgClass={(backgroundsLoaded ? "bg-3" : "")}/>} key="gifts" />
                               <Route exact path="/rsvp" component={RSVP} key="rsvp" />
                               <Route key="not-found" render={() => <div>Sorry, the page you're looking for could not be found.</div>} />
                             </Switch>
@@ -144,6 +174,8 @@ class App extends React.Component {
                   />
                 </AppContextProvider>
               </main>
+              <div ref={ref => this.imagePreload = ref}>
+              </div>
             </div>
           </Router>
         </WebfontLoader>
