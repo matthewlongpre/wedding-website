@@ -21,7 +21,6 @@ class App extends React.Component {
     this.state = {
       loaded: false,
       bgLoaded: false,
-      fontsLoaded: false,
       menuOpen: false,
       svgLoaded: false
     }
@@ -65,7 +64,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // console.log(Raleway);
     const homeBG = new Image();
     homeBG.src = homeBGUrl;
     homeBG.onload = () => {
@@ -76,19 +74,8 @@ class App extends React.Component {
     };
   }
 
-  handleWebFontLoad = (status) => {
-    console.log("handleWebFontLoad!");
-    console.log(status);
-    if (status === "inactive") {
-      this.setState({
-        fontsLoaded: true
-      });
-    }
-  }
-
   render() {
-    const { loaded, fontsLoaded } = this.state;
-    // { if (!loaded) return <div></div> }
+    const { loaded } = this.state;
     return (
       <div ref={appRef => this.appContainerElement = appRef} className={`App w-100 h-100 font-raleway bg-fade`} id="outer-container">
         <WebfontLoader config={this.webFontConfig} onStatus={this.handleWebFontLoad}>
