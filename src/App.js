@@ -12,6 +12,8 @@ import RSVP from './routes/RSVP';
 import './styles/main.css';
 
 import homeBGUrl from './assets/santorini-1.jpg';
+import locationBGUrl from './assets/santorini-3.jpg';
+import giftsBGUrl from './assets/fort-common-3.jpg';
 
 import { AppContextProvider } from './components/AppContext';
 
@@ -21,13 +23,15 @@ class App extends React.Component {
     this.state = {
       loaded: false,
       bgLoaded: false,
+      backgroundsLoaded: false,
       menuOpen: false,
       svgLoaded: false
     }
+
     this.appContainerElement = null;
     this.webFontConfig = {
       custom: {
-        families: ['Raleway']
+        families: ['Raleway', 'Blithe']
       },
       timeout: 10000
     };
@@ -70,12 +74,41 @@ class App extends React.Component {
       this.setState({
         bgLoaded: true
       });
-      this.appContainerElement.classList.add('bg-fade-in');
+
+      this.appContainerElement.classList.add('initial-load-complete');
+      setTimeout(() => {
+        this.appContainerElement.classList.remove('initial-load');
+        this.appContainerElement.classList.remove('initial-load-complete');
+      }, 2000);
     };
   }
 
+  componentDidUpdate() {
+    if (this.state.bgLoaded && !this.state.backgroundsLoaded) {
+      const bgs = [
+        this.loadImage(locationBGUrl),
+        this.loadImage(giftsBGUrl)
+      ];
+      Promise.all(bgs)
+        .then(
+          this.setState({
+            backgroundsLoaded: true
+          })
+        );
+    }
+  }
+
+  loadImage = (url) => {
+    return new Promise((resolve, reject) => {
+      const image = new Image();
+      image.src = url;
+      image.onload = () => {
+        resolve(image)
+      };
+    });
+  }
   render() {
-    const { loaded } = this.state;
+    const { loaded, backgroundsLoaded } = this.state;
     return (
       <div ref={appRef => this.appContainerElement = appRef} className={`App w-100 h-100 font-raleway bg-fade`} id="outer-container">
         <WebfontLoader config={this.webFontConfig} onStatus={this.handleWebFontLoad}>
@@ -94,9 +127,10 @@ class App extends React.Component {
                             timeout={333}
                           >
                             <Switch location={location} key="switch">
-                              <Route exact path="/" render={(props) => <Home svgLoaded={() => this.svgLoaded()} />} key="home" />
-                              <Route exact path="/location" component={Location} key="location" />
-                              <Route exact path="/gifts" component={Gifts} key="gifts" />
+
+                              <Route exact path="/" render={() => <Home bgClass={(backgroundsLoaded ? "bg-1" : "")} svgLoaded={() => this.svgLoaded()} />} key="home" />
+                              <Route exact path="/location" render={(props) => <Location bgClass={(backgroundsLoaded ? "bg-4" : "")}/>} key="location" />
+                              <Route exact path="/gifts" render={(props) => <Gifts bgClass={(backgroundsLoaded ? "bg-3" : "")}/>} key="gifts" />
                               <Route exact path="/rsvp" component={RSVP} key="rsvp" />
                               <Route key="not-found" render={() => <div>Sorry, the page you're looking for could not be found.</div>} />
                             </Switch>

@@ -311,12 +311,15 @@ nav li a {
   margin: auto;
 }
 
-.bg-fade .page-background {
+
+
+.initial-load .page-home {
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
 
-.bg-fade-in .page-background {
+
+.initial-load-complete .page-home {
   opacity: 1;
 }
 
