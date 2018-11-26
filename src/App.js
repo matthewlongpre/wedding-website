@@ -108,7 +108,7 @@ class App extends React.Component {
     });
   }
   render() {
-    const { loaded } = this.state;
+    const { loaded, backgroundsLoaded } = this.state;
     return (
       <div ref={appRef => this.appContainerElement = appRef} className={`App w-100 h-100 font-raleway bg-fade`} id="outer-container">
         <WebfontLoader config={this.webFontConfig} onStatus={this.handleWebFontLoad}>
