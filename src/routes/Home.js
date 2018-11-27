@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-import MALogo from '../assets/new.svg';
+import MALogo from '../assets/m+a-2.svg';
 import SVG from 'react-inlinesvg';
 
 const Home = (props) => {
@@ -17,7 +17,7 @@ const Home = (props) => {
           }}
           cacheGetRequests
         >
-          <img src={MALogo} />
+          <img src={MALogo} alt="Matt and Amee" />
         </SVG>
 
         <h1 className="text-uppercase text-italic letter-spacing-2 f-1 m-0 pv-2">September 7, 2019</h1>

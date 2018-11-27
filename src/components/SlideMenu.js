@@ -15,7 +15,7 @@ class SlideMenu extends React.Component {
     return (
       <div>
         <Media query="(max-width: 479px)">
-          <Menu customBurgerIcon={<img src={menuIcon} />} customCrossIcon={<img src={closeIcon} />} pageWrapId={"page-wrap"} outerContainerId={"outer-container"} right isOpen={this.props.menuOpen}>
+          <Menu customBurgerIcon={<img src={menuIcon} alt="Menu" />} customCrossIcon={<img src={closeIcon} alt="Close" />} pageWrapId={"page-wrap"} outerContainerId={"outer-container"} right isOpen={this.props.menuOpen}>
             <Nav _closeMenu={() => this._closeMenu()} />
           </Menu>
         </Media>

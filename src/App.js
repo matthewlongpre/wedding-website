@@ -11,8 +11,8 @@ import Gifts from './routes/Gifts';
 import RSVP from './routes/RSVP';
 import './styles/main.css';
 
-import homeBGUrl from './assets/santorini-1.jpg';
-import locationBGUrl from './assets/santorini-3.jpg';
+import homeBGUrl from './assets/santorini-1.01.jpg';
+import locationBGUrl from './assets/santorini-3.0.1.jpg';
 import giftsBGUrl from './assets/fort-common-3.jpg';
 
 import { AppContextProvider } from './components/AppContext';
@@ -108,7 +108,7 @@ class App extends React.Component {
     });
   }
   render() {
-    const { loaded, backgroundsLoaded } = this.state;
+    const { backgroundsLoaded } = this.state;
     return (
       <div ref={appRef => this.appContainerElement = appRef} className={`App w-100 h-100 font-raleway bg-fade`} id="outer-container">
         <WebfontLoader config={this.webFontConfig} onStatus={this.handleWebFontLoad}>
