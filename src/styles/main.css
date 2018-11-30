@@ -83,7 +83,7 @@ body {
   overflow: auto;
 }
 
-#page-wrap>div, #page-wrap>div>div {
+#page-wrap > div, #page-wrap > div > div {
   width: 100%;
   height: 100%;
 }
