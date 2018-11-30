@@ -12,6 +12,20 @@
 
 html {
   box-sizing: border-box;
+  font-size: 16px;
+  background: #2b3038;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  color: #fff;
 }
 
 .font-blithe {
@@ -60,30 +74,12 @@ html {
   margin: auto;
 }
 
-html, body {
-  width: 100%;
-  height: 100%;
-}
-
-html {
-  box-sizing: border-box;
-  font-size: 16px;
-  background: #2b3038;
-}
-
-body {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  color: #fff;
-}
-
 #page-wrap {
   height: 100%;
   overflow: auto;
 }
 
-#page-wrap > div, #page-wrap > div > div {
+#page-wrap>div, #page-wrap>div>div {
   width: 100%;
   height: 100%;
 }
