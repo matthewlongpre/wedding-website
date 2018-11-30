@@ -78,6 +78,11 @@ body {
   color: #fff;
 }
 
+#page-wrap {
+  height: 100%;
+  overflow: auto;
+}
+
 #page-wrap>div, #page-wrap>div>div {
   width: 100%;
   height: 100%;
