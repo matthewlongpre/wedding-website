@@ -6,6 +6,14 @@
   font-style: normal;
 }
 
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
 .font-blithe {
   font-family: 'Blithe';
 }
@@ -42,6 +50,16 @@
   opacity: 1;
 }
 
+.ma-logo.rsvp {
+  text-align: center;
+  margin: 40px auto 0px;
+}
+
+.ma-logo.rsvp svg {
+  max-width: 160px;
+  margin: auto;
+}
+
 html, body {
   width: 100%;
   height: 100%;
@@ -50,7 +68,7 @@ html, body {
 html {
   box-sizing: border-box;
   font-size: 16px;
-  background: #181818;
+  background: #2b3038;
 }
 
 body {
@@ -60,9 +78,18 @@ body {
   color: #fff;
 }
 
+#page-wrap {
+  height: 100%;
+  overflow: auto;
+}
+
 #page-wrap>div, #page-wrap>div>div {
   width: 100%;
   height: 100%;
+}
+
+.page-content {
+  max-width: 550px;
 }
 
 .w-100 {
@@ -81,8 +108,16 @@ body {
   font-style: italic;
 }
 
+.letter-spacing-1 {
+  letter-spacing: 1px;
+}
+
 .letter-spacing-2 {
   letter-spacing: 2px;
+}
+
+.font-sm {
+  font-size: 14px;
 }
 
 .f-1 {
@@ -129,6 +164,14 @@ body {
   margin: 0;
 }
 
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
 .p-0 {
   padding: 0;
 }
@@ -139,6 +182,10 @@ body {
 
 .p-40 {
   padding: 40px;
+}
+
+.pt-80 {
+  padding-top: 80px;
 }
 
 .pt-3 {
@@ -207,16 +254,8 @@ nav li a {
 /* Position and sizing of clickable cross button */
 
 .bm-cross-button {
-  /* height: 36px !important;
-  width: 36px !important; */
   right: 36px !important;
   top: 36px !important;
-}
-
-/* Color/shape of close button cross */
-
-.bm-cross {
-  background: #bdc3c7;
 }
 
 /* General sidebar styles */
@@ -302,7 +341,7 @@ nav li a {
   background-color: rgba(0, 0, 0, 0.3);
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
@@ -335,19 +374,42 @@ nav li a {
   background-image: url('../assets/fort-common-3.jpg');
 }
 
+.bg-5 {
+  background-image: url('../assets/ferris-wheel.jpg');
+  background-size: cover;
+}
+
 .button {
-  background: transparent;
-  min-height: 50px;
-  border: 0;
+  min-height: 60px;
+  margin-top: 23px;
+  border: 1px solid #fff;
   transition: all 0.3s ease-in-out;
   padding: 0;
+  color: #fff;
+  background: rgba(43, 48, 56, .75);
+  text-decoration: none;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  display: block;
+  transition: all 0.3s ease-in-out;
 }
 
 .button:hover {
   border-color: #ab9c95;
+  background: rgba(43, 48, 56, 1);
+  color: #fff;
 }
 
-.button a {
+.button.scale {
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+}
+
+.button.scale:hover {
+  transform: scale(1);
+}
+
+/* .button a {
   color: #fff;
   background: rgba(43, 48, 56, .75);
   text-decoration: none;
@@ -358,29 +420,9 @@ nav li a {
   transform: scale(0.9);
 }
 
-.button a:hover {
-  background: rgba(43, 48, 56, 1);
-  color: #fff;
-  transform: scale(1);
-}
-
-.button a::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: -8px;
-  right: 0;
-  margin: auto;
-  width: 100%;
-  height: 100%;
-  border: 1px solid rgba(255,255,255,.7);
-  padding: 7px;
-}
-
 .button a::after:hover {
   border-color: #fff;
-}
+} */
 
 .fade-enter {
   opacity: 0.01;
@@ -402,4 +444,172 @@ nav li a {
 
 .isvg {
   width: 100%;
+}
+
+.input-group.radio {
+  background-color: #fff;
+  display: block;
+  margin: 23px 0 10px;
+  position: relative;
+}
+
+.input-group.radio label {
+  padding: 12px 20px;
+  width: 100%;
+  display: block;
+  text-align: left;
+  color: #3c454c;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: color 200ms ease-in;
+  overflow: hidden;
+}
+
+.input-group.radio label:before {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  content: "";
+  background-color: #d69e8b;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%) scale3d(0.5, 0.5, 0.5);
+  transform: translate(-50%, -50%) scale3d(0.5, 0.5, 0.5);
+  transition: all 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  z-index: -1;
+}
+
+@media (min-width: 768px) {
+  .input-group.radio label:before {
+    -webkit-transform: translate(-50%, -50%) scale3d(1, 1, 1);
+    transform: translate(-50%, -50%) scale3d(1, 1, 1);
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.input-group.radio label:after {
+  width: 32px;
+  height: 32px;
+  content: "";
+  border: 2px solid #d1d7dc;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+  background-repeat: no-repeat;
+  background-position: 2px 3px;
+  border-radius: 50%;
+  z-index: 2;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: all 200ms ease-in;
+}
+
+.input-group.radio input:checked~label {
+  color: #1e2227;
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
+}
+
+.input-group.radio input:checked~label:before {
+  -webkit-transform: translate(-50%, -50%) scale3d(56, 56, 1);
+  transform: translate(-50%, -50%) scale3d(56, 56, 1);
+  opacity: 1;
+}
+
+.input-group.radio input:checked~label:after {
+  background-color: #1e2227;
+  border-color: #1e2227;
+}
+
+.input-group.radio input {
+  width: 32px;
+  height: 32px;
+  order: 1;
+  z-index: 2;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0px auto;
+  font-weight: 600;
+  line-height: 36px;
+}
+
+.float-label .control {
+  position: relative;
+  width: 100%;
+  padding-top: 23px;
+  padding-bottom: 10px;
+}
+
+.float-label .control.small {
+  width: 30%;
+  border-right: 1px solid #ddd;
+}
+
+.float-label .control.medium {
+  width: 70%;
+  padding-left: 10px;
+}
+
+.float-label .control:last-child {
+  border: 0;
+}
+
+.float-label input[type='text'], .float-label textarea {
+  display: block;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  resize: none;
+  height: 50px;
+  padding: 0 20px;
+  border-radius: 0;
+}
+
+.float-label input[type='text']+label, .float-label textarea+label {
+  position: absolute;
+  top: 10px;
+  transition: top 0.7s ease, opacity 0.7s ease;
+  opacity: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ccc;
+}
+
+.float-label input[type='text']:valid+label, .float-label textarea:valid+label {
+  opacity: 1;
+  top: -7px;
+}
+
+.float-label input[type='text']:focus+label, .float-label textarea:focus+label {
+  color: #fff;
+  opacity: 1;
+  top: -7px;
+}
+
+.float-label input::-webkit-input-placeholder {
+  transition: color 0.3s ease-in-out;
+}
+
+.float-label input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.float-label input:focus:-moz-placeholder {
+  color: transparent;
 }
