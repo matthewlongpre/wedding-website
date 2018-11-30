@@ -14,6 +14,8 @@ import './styles/main.css';
 import homeBGUrl from './assets/santorini-1.01.jpg';
 import locationBGUrl from './assets/santorini-3.0.1.jpg';
 import giftsBGUrl from './assets/fort-common-3.jpg';
+import rsvpBGUrl from './assets/ferris-wheel.jpg';
+
 
 import { AppContextProvider } from './components/AppContext';
 
@@ -25,7 +27,8 @@ class App extends React.Component {
       bgLoaded: false,
       backgroundsLoaded: false,
       menuOpen: false,
-      svgLoaded: false
+      svgLoaded: false,
+      formComplete: false
     }
 
     this.appContainerElement = null;
@@ -87,7 +90,8 @@ class App extends React.Component {
     if (this.state.bgLoaded && !this.state.backgroundsLoaded) {
       const bgs = [
         this.loadImage(locationBGUrl),
-        this.loadImage(giftsBGUrl)
+        this.loadImage(giftsBGUrl),
+        this.loadImage(rsvpBGUrl)
       ];
       Promise.all(bgs)
         .then(
@@ -96,6 +100,19 @@ class App extends React.Component {
           })
         );
     }
+  }
+
+  _handleFormComplete() {
+    alert('thanks!');
+    this.setState({
+      formComplete: true
+    });
+  }
+
+  _resetForm() {
+    this.setState({
+      formComplete: false
+    });
   }
 
   loadImage = (url) => {
@@ -131,7 +148,7 @@ class App extends React.Component {
                               <Route exact path="/" render={() => <Home bgClass={(backgroundsLoaded ? "bg-1" : "")} svgLoaded={() => this.svgLoaded()} />} key="home" />
                               <Route exact path="/location" render={(props) => <Location bgClass={(backgroundsLoaded ? "bg-4" : "")}/>} key="location" />
                               <Route exact path="/gifts" render={(props) => <Gifts bgClass={(backgroundsLoaded ? "bg-3" : "")}/>} key="gifts" />
-                              <Route exact path="/rsvp" component={RSVP} key="rsvp" />
+                              <Route exact path="/rsvp" render={(props) => <RSVP formComplete={this.state.formComplete} _resetForm={() => this._resetForm()} _handleFormComplete={() => this._handleFormComplete()} bgClass={(backgroundsLoaded ? "" : "")} />} key="rsvp" />
                               <Route key="not-found" render={() => <div>Sorry, the page you're looking for could not be found.</div>} />
                             </Switch>
                           </CSSTransition>

@@ -21,9 +21,9 @@ const Home = (props) => {
         </SVG>
 
         <h1 className="text-uppercase text-italic letter-spacing-2 f-1 m-0 pv-2">September 7, 2019</h1>
-        <button className="button rsvp font-raleway">
-          <Link to="/rsvp/">RSVP</Link>
-        </button>
+
+          <Link className="button scale rsvp font-raleway" to="/rsvp/">RSVP</Link>
+
       </div>
     </div>
   );

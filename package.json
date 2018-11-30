@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@dr-kobros/react-webfont-loader": "^8.0.0",
+    "firebase": "^5.5.9",
     "raleway-webfont": "^3.0.1",
     "react": "^16.6.3",
     "react-burger-menu": "^2.5.4",
