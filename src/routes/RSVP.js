@@ -45,16 +45,14 @@ class RSVP extends React.Component {
     const newRSVPRef = this.databaseRef.push();
     newRSVPRef.set(rsvp, (error) => {
       if (error) {
-        console.log('failed', error);
+        console.error('Failed', error);
       } else {
-        console.log('data saved!');
         this._handleFormComplete();
       }
     });
   }
 
   _handleFormComplete() {
-    console.log('rsvp form complete');
     this.props._handleFormComplete();
   }
 
