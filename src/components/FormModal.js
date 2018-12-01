@@ -1,14 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom'
-
-const Button = withRouter(({ history }) => (
-  <button
-    type='button'
-    onClick={() => { history.push('/') }}
-  >
-    I'm good
-  </button>
-))
 
 const FormSuccess = (props) => {
   return (
@@ -23,11 +13,11 @@ export const FormModal = (props) => {
     return (
       <div className="form-modal flex flex-direction-column justify-content-center align-items-center">
         <FormSuccess loadComplete={props.formSubmitSuccessful} />
-        <div>
+        {props.formSubmitSuccessful && <div>
           Submit another?
           <button type="button" onClick={() => props._handleSubmitAnotherClick()}>Yes!</button>
-          <Button />
-        </div>
+          <button type="button" onClick={() => props._handleFinishedClick()}>No!</button>
+        </div>}
       </div>
     );
   }

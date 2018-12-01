@@ -16,6 +16,7 @@ class RSVP extends React.Component {
       rsvp: ''
     }
 
+    this.formRef = null;
     this._handleChange = this._handleChange.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
     this.databaseRef = firebase.database().ref('rsvps');
@@ -58,12 +59,16 @@ class RSVP extends React.Component {
   }
 
   _handleFinishedClick() {
-    alert('k!');
+    this.props._formFinished(); 
+  }
+
+  componentDidMount() {
+    this.formRef.classList.add('form-loaded');
   }
 
   render() {
     if (this.props.formSubmitting || this.props.formSubmitSuccessful) {
-      return <FormModal formSubmitting={this.props.formSubmitting} formSubmitSuccessful={this.props.formSubmitSuccessful} _handleSubmitAnotherClick={() => this._handleSubmitAnotherClick()} />
+      return <FormModal formSubmitting={this.props.formSubmitting} formSubmitSuccessful={this.props.formSubmitSuccessful} _handleSubmitAnotherClick={() => this._handleSubmitAnotherClick()} _handleFinishedClick={() => this._handleFinishedClick()}/>
     }
     return (
       <div className={`${this.props.bgClass} page-background w-100 h-100 flex flex-direction-column justify-content-center align-items-center`}>
@@ -80,7 +85,7 @@ class RSVP extends React.Component {
             Please fill out this form per individual guest.
           </h4>
 
-          <form className="form float-label" id="intro-form" onSubmit={this._handleSubmit}>
+          <form ref={ref => this.formRef = ref} className="form float-label" id="intro-form" onSubmit={this._handleSubmit}>
 
             <div className="control">
               <input className="font-raleway text-uppercase text-italic letter-spacing-1 f-1" type="text" name="firstName" placeholder="First name" required id="firstName" onChange={this._handleChange} />
@@ -105,8 +110,8 @@ class RSVP extends React.Component {
             </div>
 
             <div className="input-group radio">
-              <input id="radio2" name="rsvp" type="radio" required onChange={this._handleChange} value="declined" />
-              <label htmlFor="radio2">No, I'll celebrate from afar.</label>
+              <input id="radio2" name="rsvp" type="radio" className="radio-decline" required onChange={this._handleChange} value="declined" />
+              <label htmlFor="radio2" className="label-decline">No, I'll celebrate from afar.</label>
             </div>
 
             <div className="control">
