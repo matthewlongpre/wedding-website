@@ -1,18 +1,10 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom'
 import firebase from '../firebase';
+
+import { FormModal } from '../components/FormModal';
 
 import MALogo from '../assets/m+a-2.svg';
 import SVG from 'react-inlinesvg';
-
-const Button = withRouter(({ history }) => (
-  <button
-    type='button'
-    onClick={() => { history.push('/') }}
-  >
-    I'm good
-  </button>
-))
 
 class RSVP extends React.Component {
   constructor(props) {
@@ -38,7 +30,12 @@ class RSVP extends React.Component {
 
   _handleSubmit(event) {
     event.preventDefault();
+    this._openFormModal();
     this._submitRSVP(this.state);
+  }
+
+  _openFormModal() {
+    this.props._handleFormSubmit();
   }
 
   _submitRSVP(rsvp) {
@@ -47,13 +44,13 @@ class RSVP extends React.Component {
       if (error) {
         console.error('Failed', error);
       } else {
-        this._handleFormComplete();
+        this._handleFormSubmitSuccessful();
       }
     });
   }
 
-  _handleFormComplete() {
-    this.props._handleFormComplete();
+  _handleFormSubmitSuccessful() {
+    this.props._handleFormSubmitSuccessful();
   }
 
   _handleSubmitAnotherClick() {
@@ -61,16 +58,13 @@ class RSVP extends React.Component {
   }
 
   _handleFinishedClick() {
-    alert('k!');
+    this.props.history.push('/');
+    this.props._formFinished(); 
   }
 
   render() {
-    if (this.props.formComplete) {
-      return <div style={{marginTop: '200px'}}>
-        Submit another?
-        <button onClick={() => this._handleSubmitAnotherClick()}>Yes!</button>
-        <Button />
-      </div>
+    if (this.props.formSubmitting || this.props.formSubmitSuccessful) {
+      return <FormModal formSubmitting={this.props.formSubmitting} formSubmitSuccessful={this.props.formSubmitSuccessful} _handleSubmitAnotherClick={() => this._handleSubmitAnotherClick()} _handleFinishedClick={() => this._handleFinishedClick()}/>
     }
     return (
       <div className={`${this.props.bgClass} page-background w-100 h-100 flex flex-direction-column justify-content-center align-items-center`}>
@@ -107,13 +101,13 @@ class RSVP extends React.Component {
             <h4 className="text-italic mb-0">Will you be attending?</h4>
 
             <div className="input-group radio">
-              <input id="radio1" name="rsvp" type="radio" onChange={this._handleChange} value="accepted" />
+              <input id="radio1" name="rsvp" type="radio" required onChange={this._handleChange} value="accepted" />
               <label htmlFor="radio1">Yes, with pleasure!</label>
             </div>
 
             <div className="input-group radio">
-              <input id="radio2" name="rsvp" type="radio" onChange={this._handleChange} value="declined" />
-              <label htmlFor="radio2">No, I'll celebrate from afar.</label>
+              <input id="radio2" name="rsvp" type="radio" className="radio-decline" required onChange={this._handleChange} value="declined" />
+              <label htmlFor="radio2" className="label-decline">No, I'll celebrate from afar.</label>
             </div>
 
             <div className="control">

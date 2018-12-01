@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import SlideMenu from './components/SlideMenu.js';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
@@ -28,7 +29,9 @@ class App extends React.Component {
       backgroundsLoaded: false,
       menuOpen: false,
       svgLoaded: false,
-      formComplete: false
+      formComplete: false,
+      formSubmitting: false,
+      formSubmitSuccessful: false
     }
 
     this.appContainerElement = null;
@@ -102,17 +105,28 @@ class App extends React.Component {
     }
   }
 
-  _handleFormComplete() {
-    alert('thanks!');
+  _handleFormSubmit() {
     this.setState({
-      formComplete: true
+      formSubmitting: true
+    });
+  }
+
+  _handleFormSubmitSuccessful() {
+    this.setState({
+      formSubmitting: false,
+      formSubmitSuccessful: true
     });
   }
 
   _resetForm() {
     this.setState({
+      formSubmitSuccessful: false,
       formComplete: false
     });
+  }
+
+  _formFinished() {
+    this._resetForm();  
   }
 
   loadImage = (url) => {
@@ -124,6 +138,7 @@ class App extends React.Component {
       };
     });
   }
+  
   render() {
     const { backgroundsLoaded } = this.state;
     return (
@@ -147,7 +162,19 @@ class App extends React.Component {
                               <Route exact path="/" render={() => <Home bgClass={(backgroundsLoaded ? "bg-1" : "")} svgLoaded={() => this.svgLoaded()} />} key="home" />
                               <Route exact path="/location" render={(props) => <Location bgClass={(backgroundsLoaded ? "bg-4" : "")}/>} key="location" />
                               <Route exact path="/gifts" render={(props) => <Gifts bgClass={(backgroundsLoaded ? "bg-3" : "")}/>} key="gifts" />
-                              <Route exact path="/rsvp" render={(props) => <RSVP formComplete={this.state.formComplete} _resetForm={() => this._resetForm()} _handleFormComplete={() => this._handleFormComplete()} bgClass={(backgroundsLoaded ? "" : "")} />} key="rsvp" />
+                              <Route exact path="/rsvp" render={(props) => 
+                                <RSVP 
+                                  history={props.history}
+                                  formComplete={this.state.formComplete}
+                                  formSubmitting={this.state.formSubmitting}
+                                  formSubmitSuccessful={this.state.formSubmitSuccessful}
+                                  _handleFormSubmit={() => this._handleFormSubmit()}
+                                  _resetForm={() => this._resetForm()} 
+                                  _handleFormSubmitSuccessful={() => this._handleFormSubmitSuccessful()} bgClass={(backgroundsLoaded ? "" : "")} 
+                                  _formFinished={() => this._formFinished()}
+                                />} 
+                                key="rsvp"
+                                />
                               <Route key="not-found" render={() => <div>Sorry, the page you're looking for could not be found.</div>} />
                             </Switch>
                           </CSSTransition>
