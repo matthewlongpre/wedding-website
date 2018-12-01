@@ -16,7 +16,6 @@ class RSVP extends React.Component {
       rsvp: ''
     }
 
-    this.formRef = null;
     this._handleChange = this._handleChange.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
     this.databaseRef = firebase.database().ref('rsvps');
@@ -59,11 +58,8 @@ class RSVP extends React.Component {
   }
 
   _handleFinishedClick() {
+    this.props.history.push('/');
     this.props._formFinished(); 
-  }
-
-  componentDidMount() {
-    this.formRef.classList.add('form-loaded');
   }
 
   render() {
@@ -85,7 +81,7 @@ class RSVP extends React.Component {
             Please fill out this form per individual guest.
           </h4>
 
-          <form ref={ref => this.formRef = ref} className="form float-label" id="intro-form" onSubmit={this._handleSubmit}>
+          <form className="form float-label" id="intro-form" onSubmit={this._handleSubmit}>
 
             <div className="control">
               <input className="font-raleway text-uppercase text-italic letter-spacing-1 f-1" type="text" name="firstName" placeholder="First name" required id="firstName" onChange={this._handleChange} />
