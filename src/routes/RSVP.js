@@ -45,16 +45,14 @@ class RSVP extends React.Component {
     const newRSVPRef = this.databaseRef.push();
     newRSVPRef.set(rsvp, (error) => {
       if (error) {
-        console.log('failed', error);
+        console.error('Failed', error);
       } else {
-        console.log('data saved!');
         this._handleFormComplete();
       }
     });
   }
 
   _handleFormComplete() {
-    console.log('rsvp form complete');
     this.props._handleFormComplete();
   }
 
@@ -72,7 +70,6 @@ class RSVP extends React.Component {
         Submit another?
         <button onClick={() => this._handleSubmitAnotherClick()}>Yes!</button>
         <Button />
-        {/* <button onClick={() => this._handleFinishedClick()}>I'm good</button> */}
       </div>
     }
     return (
@@ -117,6 +114,11 @@ class RSVP extends React.Component {
             <div className="input-group radio">
               <input id="radio2" name="rsvp" type="radio" onChange={this._handleChange} value="declined" />
               <label htmlFor="radio2">No, I'll celebrate from afar.</label>
+            </div>
+
+            <div className="control">
+              <textarea className="font-raleway letter-spacing-1 f-1 message" type="text" name="message" placeholder="Leave us a message" id="message" onChange={this._handleChange} />
+              <label htmlFor="message">Message:</label>
             </div>
 
             <button className="button mb-20" type="submit">Submit</button>

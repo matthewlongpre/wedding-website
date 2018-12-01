@@ -587,7 +587,7 @@ nav li a {
   color: #ccc;
 }
 
-.float-label input[type='text']:valid+label, .float-label textarea:valid+label {
+.float-label input[type='text']:valid+label {
   opacity: 1;
   top: -7px;
 }
@@ -596,6 +596,11 @@ nav li a {
   color: #fff;
   opacity: 1;
   top: -7px;
+}
+
+.float-label textarea.message label {
+  top: 10px;
+  opacity: 0;
 }
 
 .float-label input::-webkit-input-placeholder {
@@ -608,4 +613,10 @@ nav li a {
 
 .float-label input:focus:-moz-placeholder {
   color: transparent;
+}
+
+textarea.message {
+  height: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
