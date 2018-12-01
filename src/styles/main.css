@@ -444,6 +444,7 @@ nav li a {
 
 .input-group.radio {
   background-color: #fff;
+  color: #181818;
   display: block;
   margin: 23px 0 10px;
   position: relative;
@@ -457,7 +458,7 @@ nav li a {
   color: #3c454c;
   cursor: pointer;
   position: relative;
-  z-index: 2;
+  z-index: 7;
   transition: color 200ms ease-in;
   overflow: hidden;
 }
@@ -485,6 +486,7 @@ nav li a {
     transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
+
 
 .input-group.radio label:after {
   width: 32px;
@@ -528,13 +530,26 @@ nav li a {
   order: 1;
   z-index: 2;
   position: absolute;
-  right: 30px;
-  top: 50%;
+  right: 27px;
+  top: 46%;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   cursor: pointer;
-  visibility: hidden;
 }
+
+.input-group.radio input[type=radio] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.input-group.radio input:focus {
+  outline: 0;
+}
+
+.input-group.radio input:focus+label:after {
+  box-shadow: 0px 0px 18px #ff3131;
+} 
 
 .form {
   width: 100%;
@@ -619,4 +634,80 @@ textarea.message {
   height: 100px;
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+#page-wrap .circle-loader {
+  margin-bottom: 3.5em;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-left-color: #5cb85c;
+  animation: loader-spin 1.2s infinite linear;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 50%;
+  width: 7em;
+  height: 7em;
+}
+
+#page-wrap .load-complete {
+  -webkit-animation: none;
+  animation: none;
+  border-color: #5cb85c;
+  transition: border 500ms ease-out;
+}
+
+.checkmark {
+  display: none;
+}
+
+.checkmark.draw:after {
+  animation-duration: 800ms;
+  animation-timing-function: ease;
+  animation-name: checkmark;
+  transform: scaleX(-1) rotate(135deg);
+}
+
+.checkmark:after {
+  opacity: 1;
+  height: 3.5em;
+  width: 1.75em;
+  transform-origin: left top;
+  border-right: 3px solid #5cb85c;
+  border-top: 3px solid #5cb85c;
+  content: '';
+  left: 1.75em;
+  top: 3.5em;
+  position: absolute;
+}
+
+@keyframes loader-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes checkmark {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+  }
+  20% {
+    height: 0;
+    width: 1.75em;
+    opacity: 1;
+  }
+  40% {
+    height: 3.5em;
+    width: 1.75em;
+    opacity: 1;
+  }
+  100% {
+    height: 3.5em;
+    width: 1.75em;
+    opacity: 1;
+  }
 }
