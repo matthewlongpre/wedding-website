@@ -4,6 +4,8 @@ import firebase from '../firebase';
 import ReactTable from 'react-table';
 import "react-table/react-table.css";
 
+import '../styles/admin.css';
+
 const provider = new firebase.auth.GoogleAuthProvider();
 
 
@@ -28,6 +30,19 @@ class Admin extends React.Component {
       // The signed-in user info.
       const user = result.user;
 
+
+      const credential = firebase.auth.GoogleAuthProvider.credential(null, token);
+      firebase.auth().signInAndRetrieveDataWithCredential(credential).catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+      });
+
       this.authSuccess(token, user);
 
     }).catch((error) => {
@@ -40,9 +55,18 @@ class Admin extends React.Component {
       const credential = error.credential;
 
       console.error(errorCode)
+      console.error(errorMessage)
+      console.error(email)
+      console.error(credential)
+
+
+      
 
       // ...
     });
+
+
+
 
     this.databaseRef.on('value', (item) => {
       const data = Object.values(item.val());
