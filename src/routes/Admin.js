@@ -49,7 +49,7 @@ class Admin extends React.Component {
     }
 
     return (
-      <div className="flex w-100 h-100 flex-direction-column justify-content-center align-items-center" >
+      <div className="flex w-100 h-100 table-wrap flex-direction-column justify-content-center align-items-center" >
           <ReactTable className="table" data={data}
           columns={[
             {
