@@ -13,7 +13,8 @@ class RSVP extends React.Component {
       firstName: '',
       lastName: '',
       email: '',
-      rsvp: ''
+      rsvp: '',
+      timeStamp: ''
     }
 
     this._handleChange = this._handleChange.bind(this);
@@ -39,6 +40,8 @@ class RSVP extends React.Component {
   }
 
   _submitRSVP(rsvp) {
+    const submission = rsvp;
+    submission.timeStamp = Date.now();
     const newRSVPRef = this.databaseRef.push();
     newRSVPRef.set(rsvp, (error) => {
       if (error) {
@@ -64,7 +67,16 @@ class RSVP extends React.Component {
 
   render() {
     if (this.props.formSubmitting || this.props.formSubmitSuccessful) {
-      return <FormModal formSubmitting={this.props.formSubmitting} formSubmitSuccessful={this.props.formSubmitSuccessful} _handleSubmitAnotherClick={() => this._handleSubmitAnotherClick()} _handleFinishedClick={() => this._handleFinishedClick()}/>
+      return (
+        <FormModal 
+          isAttending={this.state.rsvp === "accepted"}
+          firstName={this.state.firstName}
+          formSubmitting={this.props.formSubmitting}
+          formSubmitSuccessful={this.props.formSubmitSuccessful}
+          _handleSubmitAnotherClick={() => this._handleSubmitAnotherClick()}
+          _handleFinishedClick={() => this._handleFinishedClick()}
+        />
+      );
     }
     return (
       <div className={`${this.props.bgClass} page-background w-100 h-100 flex flex-direction-column justify-content-center align-items-center`}>
