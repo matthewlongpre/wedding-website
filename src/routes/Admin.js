@@ -2,6 +2,8 @@ import React from 'react';
 import firebase from '../firebase';
 
 import Login from './Login';
+import ReactTable from 'react-table';
+import "react-table/react-table.css";
 
 import '../styles/admin.css';
 
@@ -48,16 +50,33 @@ class Admin extends React.Component {
 
     return (
       <div className="flex w-100 h-100 flex-direction-column justify-content-center align-items-center" >
-        <table>
-          <thead>
-          <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Message</th>
-          </tr>
-          </thead>
-          {data.map((item) => <RSVP key={item.timeStamp} data={item} />)}
-        </table>
+          <ReactTable className="table" data={data}
+          columns={[
+            {
+              Header: "Name",
+              columns: [
+                {
+                  Header: "First Name",
+                  accessor: "firstName"
+                },
+                {
+                  Header: "Last Name",
+                  accessor: "lastName"
+                },
+                {
+                  Header: "Email",
+                  accessor: "email"
+                },
+                {
+                  Header: "Message",
+                  accessor: "message"                  
+                }
+              ]
+            }
+          ]}
+          
+          />
+          {/* {data.map((item) => <RSVP key={item.timeStamp} data={item} />)} */}
       </div>
     );
   }
