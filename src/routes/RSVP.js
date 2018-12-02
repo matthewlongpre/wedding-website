@@ -12,8 +12,7 @@ class RSVP extends React.Component {
       firstName: '',
       lastName: '',
       email: '',
-      rsvp: '',
-      timeStamp: ''
+      rsvp: ''
     }
 
     this._handleChange = this._handleChange.bind(this);
