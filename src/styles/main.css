@@ -545,7 +545,7 @@ nav li a {
   outline: 0;
 }
 
-.input-group.radio input:invalid:focus + label:after {
+.input-group.radio input:invalid:focus+label:after {
   box-shadow: 0px 0px 18px #ff3131;
 }
 
@@ -635,7 +635,7 @@ textarea.message {
 }
 
 #page-wrap .circle-loader {
-  margin-bottom: 3.5em;
+  margin-bottom: 2rem;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-left-color: #5cb85c;
   animation: loader-spin 1.2s infinite linear;
@@ -708,4 +708,10 @@ textarea.message {
     width: 1.75em;
     opacity: 1;
   }
+}
+
+.form-modal {
+  background: #2b3038;
+  position: absolute;
+  z-index: 1200;
 }
