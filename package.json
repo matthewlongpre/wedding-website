@@ -9,6 +9,7 @@
     "react": "^16.6.3",
     "react-burger-menu": "^2.5.4",
     "react-dom": "^16.6.3",
+    "react-google-login": "^4.0.0",
     "react-inlinesvg": "^0.8.2",
     "react-media": "^1.8.0",
     "react-router-dom": "^4.3.1",

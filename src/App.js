@@ -10,6 +10,8 @@ import Home from './routes/Home';
 import Location from './routes/Location';
 import Gifts from './routes/Gifts';
 import RSVP from './routes/RSVP';
+import Admin from './routes/Admin';
+
 import './styles/main.css';
 
 import homeBGUrl from './assets/santorini-1.01.jpg';
@@ -19,6 +21,8 @@ import rsvpBGUrl from './assets/ferris-wheel.jpg';
 
 
 import { AppContextProvider } from './components/AppContext';
+
+import Login from './routes/Login';
 
 class App extends React.Component {
   constructor(props) {
@@ -126,7 +130,7 @@ class App extends React.Component {
   }
 
   _formFinished() {
-    this._resetForm();  
+    this._resetForm();
   }
 
   loadImage = (url) => {
@@ -138,7 +142,7 @@ class App extends React.Component {
       };
     });
   }
-  
+
   render() {
     const { backgroundsLoaded } = this.state;
     return (
@@ -160,21 +164,23 @@ class App extends React.Component {
                           >
                             <Switch location={location} key="switch">
                               <Route exact path="/" render={() => <Home bgClass={(backgroundsLoaded ? "bg-1" : "")} svgLoaded={() => this.svgLoaded()} />} key="home" />
-                              <Route exact path="/location" render={(props) => <Location bgClass={(backgroundsLoaded ? "bg-4" : "")}/>} key="location" />
-                              <Route exact path="/gifts" render={(props) => <Gifts bgClass={(backgroundsLoaded ? "bg-3" : "")}/>} key="gifts" />
-                              <Route exact path="/rsvp" render={(props) => 
-                                <RSVP 
+                              <Route exact path="/login" component={Login} />
+                              <Route exact path="/location" render={(props) => <Location bgClass={(backgroundsLoaded ? "bg-4" : "")} />} key="location" />
+                              <Route exact path="/gifts" render={(props) => <Gifts bgClass={(backgroundsLoaded ? "bg-3" : "")} />} key="gifts" />
+                              <Route exact path="/rsvp" render={(props) =>
+                                <RSVP
                                   history={props.history}
                                   formComplete={this.state.formComplete}
                                   formSubmitting={this.state.formSubmitting}
                                   formSubmitSuccessful={this.state.formSubmitSuccessful}
                                   _handleFormSubmit={() => this._handleFormSubmit()}
-                                  _resetForm={() => this._resetForm()} 
-                                  _handleFormSubmitSuccessful={() => this._handleFormSubmitSuccessful()} bgClass={(backgroundsLoaded ? "" : "")} 
+                                  _resetForm={() => this._resetForm()}
+                                  _handleFormSubmitSuccessful={() => this._handleFormSubmitSuccessful()} bgClass={(backgroundsLoaded ? "" : "")}
                                   _formFinished={() => this._formFinished()}
-                                />} 
+                                />}
                                 key="rsvp"
-                                />
+                              />
+                              <Route key="admin" path="/admin" component={Admin} />
                               <Route key="not-found" render={() => <div>Sorry, the page you're looking for could not be found.</div>} />
                             </Switch>
                           </CSSTransition>

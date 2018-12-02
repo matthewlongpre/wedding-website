@@ -16,7 +16,7 @@
 }
 
 .input-group.radio label {
-  padding: 12px 20px;
+  padding: 12px 70px 12px 20px;
   width: 100%;
   display: block;
   text-align: left;
@@ -26,6 +26,7 @@
   z-index: 7;
   transition: color 200ms ease-in;
   overflow: hidden;
+  line-height: 1.6;
 }
 
 .input-group.radio label:before {
