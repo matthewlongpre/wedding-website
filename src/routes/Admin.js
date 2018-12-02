@@ -7,11 +7,6 @@ import "react-table/react-table.css";
 
 import '../styles/admin.css';
 
-const RSVP = (props) => {
-  const { firstName, lastName, email, timeStamp, message, index } = props.data;
-  return <tr key={index}><td>{firstName}</td> <td>{lastName}</td> <td>{message}</td></tr>
-}
-
 class Admin extends React.Component {
   constructor(props) {
     super(props);
@@ -50,7 +45,7 @@ class Admin extends React.Component {
 
     return (
       <div className="flex w-100 h-100 table-wrap flex-direction-column justify-content-center align-items-center" >
-          <ReactTable className="table" data={data}
+        <ReactTable className="table" data={data}
           columns={[
             {
               Header: "Name",
@@ -69,14 +64,12 @@ class Admin extends React.Component {
                 },
                 {
                   Header: "Message",
-                  accessor: "message"                  
+                  accessor: "message"
                 }
               ]
             }
           ]}
-          
-          />
-          {/* {data.map((item) => <RSVP key={item.timeStamp} data={item} />)} */}
+        />
       </div>
     );
   }
