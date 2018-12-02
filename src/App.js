@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 
 import SlideMenu from './components/SlideMenu.js';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
@@ -10,6 +10,9 @@ import Home from './routes/Home';
 import Location from './routes/Location';
 import Gifts from './routes/Gifts';
 import RSVP from './routes/RSVP';
+import Admin from './routes/Admin';
+import Login from './routes/Login';
+
 import './styles/main.css';
 
 import homeBGUrl from './assets/santorini-1.01.jpg';
@@ -17,8 +20,18 @@ import locationBGUrl from './assets/santorini-3.0.1.jpg';
 import giftsBGUrl from './assets/fort-common-3.jpg';
 import rsvpBGUrl from './assets/ferris-wheel.jpg';
 
-
 import { AppContextProvider } from './components/AppContext';
+
+import fakeAuth from './auth/auth';
+
+const PrivateRoute = ({ component: Component, ...rest}) => (
+  <Route {...rest}
+    render={(props) => (
+    fakeAuth.isAuthenticated 
+    ? <Component {...props} />
+    : <Redirect to="/login" />
+  )} />
+);
 
 class App extends React.Component {
   constructor(props) {
@@ -175,6 +188,8 @@ class App extends React.Component {
                                 />} 
                                 key="rsvp"
                                 />
+                              <Route exact path="/login" component={Login} />
+                              <PrivateRoute exact path="/admin" component={Admin} />
                               <Route key="not-found" render={() => <div>Sorry, the page you're looking for could not be found.</div>} />
                             </Switch>
                           </CSSTransition>
