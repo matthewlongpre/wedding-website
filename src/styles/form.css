@@ -18,7 +18,7 @@
 .input-group.radio label {
   padding: 12px 70px 12px 20px;
   width: 100%;
-  display: block;
+  display: flex;
   text-align: left;
   color: #3c454c;
   cursor: pointer;
@@ -27,6 +27,8 @@
   transition: color 200ms ease-in;
   overflow: hidden;
   line-height: 1.6;
+  min-height: 60px;
+  align-items: center;
 }
 
 .input-group.radio label:before {
@@ -97,8 +99,9 @@
   z-index: 2;
   position: absolute;
   right: 28px;
-  top: 11px;
+  top: calc(50% - 16px);
   cursor: pointer;
+  border: 0;
 }
 
 .input-group.radio input[type=radio] {

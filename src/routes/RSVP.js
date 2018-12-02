@@ -125,7 +125,7 @@ class RSVP extends React.Component {
               <label htmlFor="message">Message:</label>
             </div>
 
-            <button className="button mb-20 font-raleway text-uppercase" type="submit">Submit</button>
+            <button className="button mb-40 font-raleway text-uppercase" type="submit">Submit</button>
           </form>
         </div>
       </div>
