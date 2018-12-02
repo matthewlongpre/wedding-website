@@ -1,8 +1,7 @@
 import React from 'react';
 import firebase from '../firebase';
-
 import { FormModal } from '../components/FormModal';
-
+import '../styles/form.css';
 import MALogo from '../assets/m+a-2.svg';
 import SVG from 'react-inlinesvg';
 

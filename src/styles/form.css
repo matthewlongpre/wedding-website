@@ -1,0 +1,191 @@
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0px auto;
+  font-weight: 600;
+  line-height: 36px;
+}
+
+.input-group.radio {
+  background-color: #fff;
+  color: #181818;
+  display: block;
+  margin: 23px 0 10px;
+  position: relative;
+}
+
+.input-group.radio label {
+  padding: 12px 20px;
+  width: 100%;
+  display: block;
+  text-align: left;
+  color: #3c454c;
+  cursor: pointer;
+  position: relative;
+  z-index: 7;
+  transition: color 200ms ease-in;
+  overflow: hidden;
+}
+
+.input-group.radio label:before {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  content: "";
+  background-color: #d69e8b;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%) scale3d(0.5, 0.5, 0.5);
+  transform: translate(-50%, -50%) scale3d(0.5, 0.5, 0.5);
+  transition: all 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .input-group.radio label:before {
+    -webkit-transform: translate(-50%, -50%) scale3d(1, 1, 1);
+    transform: translate(-50%, -50%) scale3d(1, 1, 1);
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.input-group.radio label:after {
+  width: 32px;
+  height: 32px;
+  content: "";
+  border: 2px solid #d1d7dc;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+  background-repeat: no-repeat;
+  background-position: 2px 3px;
+  border-radius: 50%;
+  z-index: 2;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: all 200ms ease-in;
+}
+
+.input-group.radio input:checked~label {
+  color: #1e2227;
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
+}
+
+.input-group.radio input:checked~label:before {
+  -webkit-transform: translate(-50%, -50%) scale3d(56, 56, 1);
+  transform: translate(-50%, -50%) scale3d(56, 56, 1);
+  z-index: -1;
+  opacity: 1;
+}
+
+.input-group.radio input:checked~label:after {
+  background-color: #1e2227;
+  border-color: #1e2227;
+}
+
+.input-group.radio input {
+  width: 32px;
+  height: 32px;
+  order: 1;
+  z-index: 2;
+  position: absolute;
+  right: 28px;
+  top: 11px;
+  cursor: pointer;
+}
+
+.input-group.radio input[type=radio] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.input-group.radio input:focus {
+  outline: 0;
+}
+
+.input-group.radio input:invalid:focus+label:after {
+  box-shadow: 0px 0px 18px #ff3131;
+}
+
+.float-label .control {
+  position: relative;
+  width: 100%;
+  padding-top: 23px;
+  padding-bottom: 10px;
+}
+
+.float-label .control.small {
+  width: 30%;
+  border-right: 1px solid #ddd;
+}
+
+.float-label .control.medium {
+  width: 70%;
+  padding-left: 10px;
+}
+
+.float-label .control:last-child {
+  border: 0;
+}
+
+.float-label input[type='text'], .float-label textarea {
+  display: block;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  resize: none;
+  height: 50px;
+  padding: 0 20px;
+  border-radius: 0;
+}
+
+.float-label input[type='text']+label, .float-label textarea+label {
+  position: absolute;
+  top: 10px;
+  transition: top 0.7s ease, opacity 0.7s ease;
+  opacity: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ccc;
+}
+
+.float-label input[type='text']:valid+label {
+  opacity: 1;
+  top: -7px;
+}
+
+.float-label input[type='text']:focus+label, .float-label textarea:focus+label {
+  color: #fff;
+  opacity: 1;
+  top: -7px;
+}
+
+.float-label textarea.message label {
+  top: 10px;
+  opacity: 0;
+}
+
+.float-label input::-webkit-input-placeholder {
+  transition: color 0.3s ease-in-out;
+}
+
+.float-label input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.float-label input:focus:-moz-placeholder {
+  color: transparent;
+}
+
+textarea.message {
+  height: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}

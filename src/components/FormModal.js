@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/form-modal.css';
 
 const FormSuccess = (props) => {
   return (
