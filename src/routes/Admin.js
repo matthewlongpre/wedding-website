@@ -23,7 +23,15 @@ class Admin extends React.Component {
   }
 
   componentDidMount() {
+    this.databaseRef.on('value', (item) => {
+      const data = Object.values(item.val());
+      this.setState({
+        data: data
+      })
+    });
+  }
 
+  handleLoginClick() {
     firebase.auth().signInWithPopup(provider).then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       const token = result.credential.accessToken;
@@ -59,20 +67,6 @@ class Admin extends React.Component {
       console.error(email)
       console.error(credential)
 
-
-      
-
-      // ...
-    });
-
-
-
-
-    this.databaseRef.on('value', (item) => {
-      const data = Object.values(item.val());
-      this.setState({
-        data: data
-      })
     });
   }
 
@@ -87,7 +81,13 @@ class Admin extends React.Component {
   render() {
     const { authenticated, data } = this.state;
 
-    if (!authenticated) return <div></div>
+    if (!authenticated) {
+      return (
+        <div className="flex w-100 h-100 table-wrap flex-direction-column justify-content-center align-items-center" >
+          <button onClick={() => this.handleLoginClick()} type="button">Login</button>
+        </div>
+      );
+    }
 
     return (
       <div className="flex w-100 h-100 table-wrap flex-direction-column justify-content-center align-items-center" >
