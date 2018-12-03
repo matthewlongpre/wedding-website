@@ -11,6 +11,8 @@ import Location from './routes/Location';
 import Gifts from './routes/Gifts';
 import RSVP from './routes/RSVP';
 import Admin from './routes/Admin';
+import Spotify from './routes/Spotify';
+
 import './styles/main.css';
 
 import homeBGUrl from './assets/santorini-1.01.jpg';
@@ -177,6 +179,7 @@ class App extends React.Component {
                                 key="rsvp"
                                 />
                               <Route exact path="/admin" component={Admin} />
+                              <Route exact path="/spotify" component={Spotify} />
                               <Route key="not-found" render={() => <div>Sorry, the page you're looking for could not be found.</div>} />
                             </Switch>
                           </CSSTransition>
