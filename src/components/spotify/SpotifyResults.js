@@ -14,7 +14,7 @@ const SpotifyResults = (props) => {
 }
 
 const SpotifyTrack = (props) => {
-  return <div className="track" onClick={() => props.handleTrackClick(props.uri)}>{props.artist} - {props.name}</div>
+  return <div className="track" onClick={() => props.handleTrackClick(props)}>{props.artist} - {props.name}</div>
 }
 
 export default SpotifyResults;

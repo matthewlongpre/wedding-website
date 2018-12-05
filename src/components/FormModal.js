@@ -1,20 +1,13 @@
 import React from 'react';
 import '../styles/form-modal.css';
-
-const FormSuccess = (props) => {
-  return (
-    <div className={`circle-loader ${props.loadComplete && "load-complete"}`}>
-      <div className="checkmark draw" style={props.loadComplete ? { display: 'block' } : { display: 'none' }}></div>
-    </div>
-  );
-}
+import LoadSuccess from './Loader';
 
 export const FormModal = (props) => {
   const { isAttending, formSubmitting, formSubmitSuccessful, firstName } = props;
   if (formSubmitting || formSubmitSuccessful) {
     return (
       <div className="form-modal flex flex-direction-column justify-content-center align-items-center">
-        <FormSuccess loadComplete={formSubmitSuccessful} />
+        <LoadSuccess loadComplete={formSubmitSuccessful} />
         {formSubmitSuccessful && 
         <div>
           <h2 className="text-italic">{isAttending ? `Thanks ${firstName}, see you there!` : `Sorry you can't make it ${firstName}.`}</h2>

@@ -3,6 +3,7 @@ import { SpotifyAuthService } from '../../services/spotify.auth.service.js';
 import { SpotifyService } from '../../services/spotify.service';
 
 import SpotifyResults from './SpotifyResults';
+import LoadSuccess from '../Loader';
 
 class SpotifySearch extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class SpotifySearch extends React.Component {
     this.state = {
       query: '',
       results: [],
+      track: null,
       trackAdded: false
     }
     this.spotifyAuthService = new SpotifyAuthService();
@@ -36,6 +38,23 @@ class SpotifySearch extends React.Component {
   }
 
   _handleTrackClick(track) {
+    this.setState({
+      trackChosen: true,
+      track: track
+    });
+  }
+
+  _handleTrackDenyClick() {
+    this.setState({
+      track: null
+    });
+  }
+
+  _handleTrackConfirmClick() {
+    this._addToPlaylist(this.state.track.uri);
+  }
+
+  _addToPlaylist(track) {
     this.spotifyService.addToPlaylist(track)
       .then(response => this._handleTrackAddSuccess(response));
   }
@@ -47,9 +66,26 @@ class SpotifySearch extends React.Component {
   }
 
   render() {
-    const { results, trackAdded } = this.state;
+    const { results, trackAdded, trackChosen, track } = this.state;
 
-    if (trackAdded) return <div>Thanks!</div>
+    if (trackAdded) {
+      return (
+        <div>
+          <LoadSuccess loadComplete={trackAdded} />
+          <h2 className="text-italic">Got it, thanks!</h2>
+        </div>
+      );
+    }
+
+    if (track) {
+      return (
+        <div>
+          <h2>Are you sure you want to choose {track.name} by {track.artist}?</h2>
+          <button onClick={() => this._handleTrackConfirmClick()} type="button">Yes!</button>
+          <button onClick={() => this._handleTrackDenyClick()} type="button">No!</button>
+        </div>
+      );
+    }
 
     return (
       <div className="flex w-100 h-100 mt-40 page-content flex-direction-column justify-content-center align-items-center">
