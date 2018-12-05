@@ -10,11 +10,11 @@ const SpotifyResults = (props) => {
       handleTrackClick={(track) => props.handleTrackClick(track)}
     />
   );
-  return <div className="flex flex-direction-column">{items}</div>
+  return <div className="flex w-100 flex-direction-column tracks scroll-y">{items}</div>
 }
 
 const SpotifyTrack = (props) => {
-  return <div onClick={() => props.handleTrackClick(props.uri)}>{props.artist} - {props.name}</div>
+  return <div className="track" onClick={() => props.handleTrackClick(props.uri)}>{props.artist} - {props.name}</div>
 }
 
 export default SpotifyResults;

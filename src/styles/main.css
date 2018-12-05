@@ -76,7 +76,8 @@ body {
 
 #page-wrap {
   height: 100%;
-  overflow: auto;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 #page-wrap>div, #page-wrap>div>div {
@@ -156,6 +157,10 @@ body {
   margin: 0;
 }
 
+.mt-40 {
+  margin-top: 40px;
+}
+
 .mb-0 {
   margin-bottom: 0;
 }
@@ -208,6 +213,11 @@ body {
 .pv-2 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.scroll-y {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 nav li a {
@@ -405,4 +415,25 @@ nav li a {
 
 .isvg {
   width: 100%;
+}
+
+.tracks {
+  margin-top: 50px;
+  overflow: auto;
+}
+
+.track {
+  padding: 10px 20px;
+}
+
+.track:hover {
+  cursor: pointer;
+}
+
+.track:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.track:nth-child(even) {
+  background: rgba(255, 255, 255, 0.05);
 }

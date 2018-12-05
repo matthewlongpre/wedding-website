@@ -9,7 +9,8 @@ class SpotifySearch extends React.Component {
     super(props);
     this.state = {
       query: '',
-      results: []
+      results: [],
+      trackAdded: false
     }
     this.spotifyAuthService = new SpotifyAuthService();
     this.spotifyService = new SpotifyService();
@@ -36,23 +37,35 @@ class SpotifySearch extends React.Component {
 
   _handleTrackClick(track) {
     this.spotifyService.addToPlaylist(track)
-      .then(response => console.log(response));
+      .then(response => this._handleTrackAddSuccess(response));
+  }
+
+  _handleTrackAddSuccess(track) {
+    this.setState({
+      trackAdded: true
+    });
   }
 
   render() {
-    const { results } = this.state;
-    { results.tracks && console.log(results.tracks.items); }
+    const { results, trackAdded } = this.state;
+
+    if (trackAdded) return <div>Thanks!</div>
 
     return (
-      <div className="flex w-100 h-100 table-wrap flex-direction-column justify-content-center align-items-center">
-        Spotify stuff
-        <form>
-          <input
-            placeholder="Search for..."
-            ref={input => this.search = input}
-            type="text"
-            onChange={this._handleInputChange}>
-          </input>
+      <div className="flex w-100 h-100 mt-40 page-content flex-direction-column justify-content-center align-items-center">
+        <form className="w-100 form float-label">
+          <div className="control">
+            <input
+              className="w-100 font-raleway text-uppercase text-italic letter-spacing-1 f-1"
+              placeholder="Search for a song or artist"
+              ref={input => this.search = input}
+              type="text"
+              id="trackSearch"
+              required
+              onChange={this._handleInputChange}>
+            </input>
+            <label htmlFor="trackSearch">Search for a song or artist:</label>
+          </div>
         </form>
         {results.tracks && <SpotifyResults handleTrackClick={(track) => this._handleTrackClick(track)} tracks={results.tracks} />}
       </div>
