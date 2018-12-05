@@ -33,22 +33,36 @@ export class SpotifyService {
     return response;
   }
 
-  getTrack = (trackID) => {
+  getPlaylist = (id) => {
     const headers = new Headers();
     headers.append('authorization', 'Bearer ' + this.authToken);
-    const url = `${this.baseUrl}tracks/${trackID}`;
-    return this.http
-      .get(url, { headers })
-      .map(res => {
-        return res.json();
-      })
+    const url = `${this.baseUrl}playlists/${id}`;
+    
+    return fetch(url, { headers })
+      .then(this.handleErrors)
+      .then(res => res.json())
+      .then(res => res)
       .catch(e => {
-        if (e.status === 401) {
-          console.error(e);
-          this.authService._login();
-        }
+        console.log(e)
       });
   }
+
+  addToPlaylist = (track) => {
+    const playlistId = `4roL0YnXoN2zdF500IYNnT`;
+    const url = `${this.baseUrl}playlists/${playlistId}/tracks?uris=${track}`;
+    const headers = new Headers();
+    headers.append('Authorization', 'Bearer ' + this.authToken);
+    headers.append('Accept', 'application/json');
+    headers.append('Content-Type', 'application/json');
+
+    const options = {
+      method: "POST",
+      headers: headers
+    }
+    return fetch(url, options)
+      .then(response => response.json());
+  }
+
 }
 
 export default SpotifyService;

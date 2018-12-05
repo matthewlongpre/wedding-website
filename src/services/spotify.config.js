@@ -10,5 +10,5 @@ export const SPOTIFY_CONFIG = {
   clientSecret: '47edeba779434b878296e9015b43dc4d',
   redirect: redirectUri,
   authURL: 'https://accounts.spotify.com/authorize',
-  scope: 'user-read-private user-read-email'
+  scope: 'user-read-private user-read-email playlist-modify-public playlist-modify-private'
 };
