@@ -61,13 +61,13 @@ class RSVP extends React.Component {
 
   _handleFinishedClick() {
     this.props.history.push('/');
-    this.props._formFinished(); 
+    this.props._formFinished();
   }
 
   render() {
     if (this.props.formSubmitting || this.props.formSubmitSuccessful) {
       return (
-        <FormModal 
+        <FormModal
           isAttending={this.state.rsvp === "accepted"}
           firstName={this.state.firstName}
           formSubmitting={this.props.formSubmitting}
@@ -78,9 +78,9 @@ class RSVP extends React.Component {
       );
     }
     return (
-      <div className={`${this.props.bgClass} page-background w-100 h-100 flex flex-direction-column justify-content-center align-items-center`}>
+      <div className="page-home page-background w-100 h-100 flex justify-content-center">
+        <div className="page-content w-100 pt-100 position-relative text-center">
 
-        <div className="page-content p-40 position-relative flex flex-direction-column justify-content-center align-items-center">
           <SVG
             className="ma-logo rsvp"
             src={MALogo}

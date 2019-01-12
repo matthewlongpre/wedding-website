@@ -1,11 +1,3 @@
-.timeline {
-  /* margin-top: 280px; */
-}
-
-.timeline ul {
-  padding-left: 90px;
-}
-
 .timeline li {
   display: flex;
   background: rgba(43, 48, 56, .75);

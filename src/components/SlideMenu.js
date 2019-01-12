@@ -42,18 +42,18 @@ class SlideMenu extends React.Component {
     const { hasScrolled } = this.state;
     return (
       <div>
-        <Media query="(max-width: 479px)">
+        <Media query="(max-width: 599px)">
           <Menu customBurgerIcon={<img src={menuIcon} alt="Menu" />} customCrossIcon={<img src={closeIcon} alt="Close" />} pageWrapId={"page-wrap"} outerContainerId={"outer-container"} right isOpen={this.props.menuOpen}>
             <Nav _closeMenu={() => this._closeMenu()} />
           </Menu>
         </Media>
-        <Media query="(min-width: 480px)">
+        <Media query="(min-width: 600px)">
           {!hasScrolled && <nav>
             <Nav isDesktop />
           </nav>}
         </Media>
 
-        {hasScrolled && <Media query="(min-width: 480px)">
+        {hasScrolled && <Media query="(min-width: 600px)">
           <Menu customBurgerIcon={<img src={menuIcon} alt="Menu" />} customCrossIcon={<img src={closeIcon} alt="Close" />} pageWrapId={"page-wrap"} outerContainerId={"outer-container"} right isOpen={this.props.menuOpen}>
             <Nav _closeMenu={() => this._closeMenu()} />
           </Menu>
