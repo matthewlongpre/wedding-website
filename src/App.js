@@ -7,6 +7,7 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import WebfontLoader from '@dr-kobros/react-webfont-loader';
 
 import Home from './routes/Home';
+import Details from './routes/Details';
 import Location from './routes/Location';
 import Gifts from './routes/Gifts';
 import RSVP from './routes/RSVP';
@@ -161,6 +162,7 @@ class App extends React.Component {
                           >
                             <Switch location={location} key="switch">
                               <Route exact path="/" render={() => <Home bgClass={(backgroundsLoaded ? "bg-1" : "")} svgLoaded={() => this.svgLoaded()} />} key="home" />
+                              <Route exact path="/details" render={(props) => <Details />} />
                               <Route exact path="/location" render={(props) => <Location bgClass={(backgroundsLoaded ? "bg-4" : "")}/>} key="location" />
                               <Route exact path="/gifts" render={(props) => <Gifts bgClass={(backgroundsLoaded ? "bg-3" : "")}/>} key="gifts" />
                               <Route exact path="/rsvp" render={(props) => 
