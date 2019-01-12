@@ -6,6 +6,8 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import WebfontLoader from '@dr-kobros/react-webfont-loader';
 
+import MainWrapper from './components/MainWrapper';
+
 import Home from './routes/Home';
 import Details from './routes/Details';
 import Location from './routes/Location';
@@ -15,8 +17,8 @@ import Admin from './routes/Admin';
 import './styles/main.css';
 
 import homeBGUrl from './assets/santorini-1.01.jpg';
-import locationBGUrl from './assets/santorini-3.0.1.jpg';
-import giftsBGUrl from './assets/fort-common-3.jpg';
+import giftsBGUrl from './assets/santorini-3.0.1.jpg';
+import locationBGUrl from './assets/fort-common-3.jpg';
 import rsvpBGUrl from './assets/ferris-wheel.jpg';
 
 
@@ -128,7 +130,7 @@ class App extends React.Component {
   }
 
   _formFinished() {
-    this._resetForm();  
+    this._resetForm();
   }
 
   loadImage = (url) => {
@@ -140,19 +142,23 @@ class App extends React.Component {
       };
     });
   }
-  
+
   render() {
     const { backgroundsLoaded } = this.state;
+
+    console.log(window.location.pathname);
+
     return (
-      <div ref={appRef => this.appContainerElement = appRef} className={`App w-100 h-100 font-raleway bg-fade`} id="outer-container">
+      <div ref={appRef => this.appContainerElement = appRef} className={`App w-100 h-100 font-raleway bg-fade overflow-x-hidden`} id="outer-container">
         <WebfontLoader config={this.webFontConfig} onStatus={this.handleWebFontLoad}>
           <Router>
             <div className="w-100 h-100">
               <SlideMenu menuOpen={this.state.menuOpen} _closeMenu={() => this._closeMenu()} />
-              <main id="page-wrap" className="w-100 h-100">
-                <AppContextProvider value={this.state}>
-                  <Route
-                    render={({ location }) => (
+              <AppContextProvider value={this.state}>
+                <Route
+                  render={({ location }) => (
+                    <MainWrapper location={location}>
+
                       <div>
                         <TransitionGroup component={null}>
                           <CSSTransition
@@ -161,33 +167,33 @@ class App extends React.Component {
                             timeout={333}
                           >
                             <Switch location={location} key="switch">
-                              <Route exact path="/" render={() => <Home bgClass={(backgroundsLoaded ? "bg-1" : "")} svgLoaded={() => this.svgLoaded()} />} key="home" />
-                              <Route exact path="/details" render={(props) => <Details />} />
-                              <Route exact path="/location" render={(props) => <Location bgClass={(backgroundsLoaded ? "bg-4" : "")}/>} key="location" />
-                              <Route exact path="/gifts" render={(props) => <Gifts bgClass={(backgroundsLoaded ? "bg-3" : "")}/>} key="gifts" />
-                              <Route exact path="/rsvp" render={(props) => 
-                                <RSVP 
+                              <Route exact path="/" render={() => <Home backgroundImage={(backgroundsLoaded ? `url('${homeBGUrl}')` : undefined)} svgLoaded={() => this.svgLoaded()} />} key="home" />
+                              <Route exact path="/details" render={(props) => <Details {...props} />} />
+                              <Route exact path="/location" render={(props) => <Location backgroundImage={(backgroundsLoaded ? `url('${locationBGUrl}')` : undefined)} />} key="location" />
+                              <Route exact path="/gifts" render={(props) => <Gifts backgroundImage={(backgroundsLoaded ? `url('${giftsBGUrl}')` : undefined)} />} key="gifts" />
+                              <Route exact path="/rsvp" render={(props) =>
+                                <RSVP
                                   history={props.history}
                                   formComplete={this.state.formComplete}
                                   formSubmitting={this.state.formSubmitting}
                                   formSubmitSuccessful={this.state.formSubmitSuccessful}
                                   _handleFormSubmit={() => this._handleFormSubmit()}
-                                  _resetForm={() => this._resetForm()} 
-                                  _handleFormSubmitSuccessful={() => this._handleFormSubmitSuccessful()} bgClass={(backgroundsLoaded ? "" : "")} 
+                                  _resetForm={() => this._resetForm()}
+                                  _handleFormSubmitSuccessful={() => this._handleFormSubmitSuccessful()} bgClass={(backgroundsLoaded ? "" : "")}
                                   _formFinished={() => this._formFinished()}
-                                />} 
+                                />}
                                 key="rsvp"
-                                />
+                              />
                               <Route exact path="/admin" component={Admin} />
                               <Route key="not-found" render={() => <div>Sorry, the page you're looking for could not be found.</div>} />
                             </Switch>
                           </CSSTransition>
                         </TransitionGroup>
                       </div>
-                    )}
-                  />
-                </AppContextProvider>
-              </main>
+                    </MainWrapper>
+                  )}
+                />
+              </AppContextProvider>
             </div>
           </Router>
         </WebfontLoader>
