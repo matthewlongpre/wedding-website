@@ -28,6 +28,17 @@ body {
   color: #fff;
 }
 
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+.hide-scroll {
+  width: calc(100% + 17px) !important;
+  position: relative;
+  left: 0;
+  right: -17px;
+}
+
 .font-blithe {
   font-family: 'Blithe';
 }
@@ -76,8 +87,12 @@ body {
 
 #page-wrap {
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
   margin-left: calc(100vw - 100%);
+}
+
+#page-wrap.should-scroll {
+  overflow-y: auto;
 }
 
 #page-wrap>div, #page-wrap>div>div {
@@ -359,11 +374,11 @@ nav li a {
   opacity: 1;
 }
 
-.bg-1 {
+/* .bg-1 {
   background-image: url('../assets/santorini-1.01.jpg');
-}
+} */
 
-.bg-2 {
+/* .bg-2 {
   background-image: url('../assets/santorini-2.jpg');
 }
 
@@ -373,10 +388,10 @@ nav li a {
 
 .bg-4 {
   background-image: url('../assets/fort-common-3.jpg');
-}
+} */
 
 .bg-5 {
-  background-image: url('../assets/ferris-wheel.jpg');
+  /* background-image: url('../assets/ferris-wheel.jpg'); */
   background-size: cover;
 }
 

@@ -42,7 +42,7 @@ const TimelineItem = (props) => {
   const { time, title, description, id } = props.data;
 
   return (
-    <li key={id}>
+    <li>
       <div className="time">
         <span className="text-uppercase text-italic text-right">{time}</span>
       </div>
@@ -57,7 +57,7 @@ const TimelineItem = (props) => {
 
 const Timeline = () => {
 
-  const timelineItems = timelineData.map(item => <TimelineItem data={item} />)
+  const timelineItems = timelineData.map(item => <TimelineItem key={item.id} data={item} />)
 
   return (
     <div className="timeline">

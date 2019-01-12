@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Notes = () => {
   return (
-    <div class="notes p-40">
+    <div className="notes p-40">
 
       <h2 className="font-blithe m-0 f-3 text-center">The Deets</h2>
 
