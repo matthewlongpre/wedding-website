@@ -34,7 +34,8 @@
   height: 20px;
   border-radius: 50%;
   position: absolute;
-  transform: translateX(-50%);
+  left: -10.5px;
+  top: calc(50% - 10px);
 }
 
 .timeline-item {
