@@ -33,7 +33,7 @@ class Location extends Component {
 
     return (
       <div style={this.bg} className={`page-background w-100 h-100 flex flex-direction-column justify-content-center align-items-center background-cover`}>
-        <div className="page-content page-content-wide w-100 position-relative flex flex-direction-column justify-content-center align-items-center">
+        <div className="page-content page-content-wide pt-100 w-100 position-relative flex flex-direction-column justify-content-center align-items-center">
           <h2 className="font-blithe m-0 f-3 text-center">The Fort Common</h2>
           <h3 className="text-italic text-center">1017 Blanshard St, Victoria, BC</h3>
           <div className="flex w-100 mt-20 button-tab-container">
