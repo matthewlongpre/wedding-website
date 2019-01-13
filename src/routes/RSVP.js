@@ -12,7 +12,9 @@ class RSVP extends React.Component {
       firstName: "",
       lastName: "",
       email: "",
-      rsvp: ""
+      rsvp: "",
+      dietaryRestrictions: "",
+      message: ""
     };
 
     this._handleChange = this._handleChange.bind(this);
@@ -158,6 +160,18 @@ class RSVP extends React.Component {
               </label>
             </div>
 
+            {this.state.rsvp === "accepted" && <div className="control">
+              <textarea
+                className="font-raleway letter-spacing-1 f-1 message dietary-restrictions"
+                type="text"
+                name="dietaryRestrictions"
+                placeholder="Any dietary restrictions?"
+                id="dietaryRestrictions"
+                onChange={this._handleChange}
+              />
+              <label htmlFor="message">Any dietary restrictions?</label>
+            </div>}
+
             <div className="control">
               <textarea
                 className="font-raleway letter-spacing-1 f-1 message"
@@ -170,17 +184,6 @@ class RSVP extends React.Component {
               <label htmlFor="message">Message:</label>
             </div>
 
-            <div className="control">
-              <textarea
-                className="font-raleway letter-spacing-1 f-1 message dietary-restrictions"
-                type="text"
-                name="dietaryRestrictions"
-                placeholder="Any dietary restrictions?"
-                id="dietaryRestrictions"
-                onChange={this._handleChange}
-              />
-              <label htmlFor="message">Any dietary restrictions?</label>
-            </div>
 
             <button
               className="button mb-40 font-raleway text-uppercase"

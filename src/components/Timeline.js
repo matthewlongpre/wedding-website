@@ -64,7 +64,7 @@ const Timeline = () => {
 
       <h2 className="font-blithe m-0 f-3 text-center">Timeline</h2>
 
-      <ul className="pl-90">
+      <ul className="pl-90 overflow-x-hidden">
         {timelineItems}
       </ul>
     </div>
