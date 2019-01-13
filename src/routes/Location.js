@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import GoogleMap from "./../components/GoogleMap";
 import FadeIn from "../components/styled-components/FadeIn";
 import Spinner from "../components/styled-components/Spinner";
+import PageBackground from "../components/styled-components/PageBackground";
 
 const maps = {
   venue:
@@ -46,47 +47,48 @@ class Location extends Component {
 
     return (
       <FadeIn loaded={backgroundsLoaded}>
-        <div
+        <PageBackground
           style={this.bg}
-          className={`page-background w-100 h-100 flex flex-direction-column justify-content-center align-items-center background-cover`}
-        >
-          <div className="page-content page-content-wide pt-100 w-100 position-relative flex flex-direction-column justify-content-center align-items-center">
-            <h2 className="font-blithe m-0 f-3 text-center heading--fort-common">The Fort Common</h2>
-            <h3 className="text-italic text-center">
-              1017 Blanshard St, Victoria, BC
-            </h3>
-            <div className="flex w-100 mt-20 button-tab-container">
-              <button
-                onClick={() => this.handleMapChange("venue")}
-                className={`button button-tab font-raleway w-100 font-sm ${mapName ===
-                  "venue" && "active"}`}
-                type="button"
-              >
-                Venue
-              </button>
-              <button
-                onClick={() => this.handleMapChange("parking")}
-                className={`button button-tab font-raleway w-100 font-sm ${mapName ===
-                  "parking" && "active"}`}
-                type="button"
-              >
-                Parking
-              </button>
-              <button
-                onClick={() => this.handleMapChange("hotels")}
-                className={`button button-tab font-raleway w-100 font-sm ${mapName ===
-                  "hotels" && "active"} `}
-                type="button"
-              >
-                Hotels
-              </button>
-            </div>
-            <div className="w-100 position-relative flex align-items-center justify-content-center">
-              {!mapLoaded && <Spinner />}
-              <FadeIn loaded={mapLoaded} className="w-100">
-                <GoogleMap map={mapSrc} handleMapLoad={this.handleMapLoad} />
-              </FadeIn>
-            </div>
+          className={`w-100 h-100 flex flex-direction-column justify-content-center align-items-center background-cover`}
+        />
+        <div className="page-content page-content-wide pt-100 w-100 position-relative flex flex-direction-column justify-content-center align-items-center">
+          <h2 className="font-blithe m-0 f-3 text-center heading--fort-common">
+            The Fort Common
+          </h2>
+          <h3 className="text-italic text-center">
+            1017 Blanshard St, Victoria, BC
+          </h3>
+          <div className="flex w-100 mt-20 button-tab-container">
+            <button
+              onClick={() => this.handleMapChange("venue")}
+              className={`button button-tab font-raleway w-100 font-sm ${mapName ===
+                "venue" && "active"}`}
+              type="button"
+            >
+              Venue
+            </button>
+            <button
+              onClick={() => this.handleMapChange("parking")}
+              className={`button button-tab font-raleway w-100 font-sm ${mapName ===
+                "parking" && "active"}`}
+              type="button"
+            >
+              Parking
+            </button>
+            <button
+              onClick={() => this.handleMapChange("hotels")}
+              className={`button button-tab font-raleway w-100 font-sm ${mapName ===
+                "hotels" && "active"} `}
+              type="button"
+            >
+              Hotels
+            </button>
+          </div>
+          <div className="w-100 position-relative flex align-items-center justify-content-center">
+            {!mapLoaded && <Spinner />}
+            <FadeIn loaded={mapLoaded} className="w-100">
+              <GoogleMap map={mapSrc} handleMapLoad={this.handleMapLoad} />
+            </FadeIn>
           </div>
         </div>
       </FadeIn>

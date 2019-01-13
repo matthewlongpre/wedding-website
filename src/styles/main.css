@@ -105,6 +105,8 @@ body {
 .page-content {
   padding-left: 16vw;
   padding-right: 16vw;
+  width: 100vw;
+  min-height: 100vh;
 }
 
 @media (min-width: 1366px) {
