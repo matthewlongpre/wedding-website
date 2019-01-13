@@ -410,6 +410,7 @@ nav li a {
   border-color: #ab9c95;
   background: rgba(43, 48, 56, 1);
   color: #fff;
+  cursor: pointer;
 }
 
 .button.scale {
