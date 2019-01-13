@@ -88,7 +88,7 @@ class RSVP extends React.Component {
             id="intro-form"
             onSubmit={this._handleSubmit}
           >
-            <h4 className="text-italic">
+            <h4 className="text-italic text-center">
               Please fill out this form per individual guest.
             </h4>
 
