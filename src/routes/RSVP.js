@@ -79,88 +79,88 @@ class RSVP extends React.Component {
       );
     }
     return (
-      <div className="page-home page-background w-100 h-100 flex justify-content-center">
-        <div className="page-content w-100 pt-100 position-relative text-center">
-          <SVG className="ma-logo rsvp" src={MALogo} cacheGetRequests />
+      <div className="page-content w-100 pt-100 position-relative text-center">
+        <SVG className="ma-logo rsvp" src={MALogo} cacheGetRequests />
 
-          <form
-            className="form float-label text-left"
-            id="intro-form"
-            onSubmit={this._handleSubmit}
-          >
-            <h4 className="text-italic text-center">
-              Please fill out this form per individual guest.
-            </h4>
+        <form
+          className="form float-label text-left"
+          id="intro-form"
+          onSubmit={this._handleSubmit}
+        >
+          <h4 className="text-italic text-center">
+            Please fill out this form per individual guest.
+          </h4>
 
+          <div className="control">
+            <input
+              className="font-raleway text-uppercase text-italic letter-spacing-1 f-1"
+              type="text"
+              name="firstName"
+              placeholder="First name"
+              required
+              id="firstName"
+              onChange={this._handleChange}
+            />
+            <label htmlFor="firstName">First name:</label>
+          </div>
+
+          <div className="control">
+            <input
+              className="font-raleway text-uppercase text-italic letter-spacing-1 f-1"
+              type="text"
+              name="lastName"
+              placeholder="Last name"
+              id="lastName"
+              required
+              onChange={this._handleChange}
+            />
+            <label htmlFor="lastName">Last name:</label>
+          </div>
+
+          <div className="control">
+            <input
+              className="font-raleway text-uppercase text-italic letter-spacing-1 f-1"
+              type="text"
+              name="email"
+              placeholder="Email"
+              id="email"
+              required
+              onChange={this._handleChange}
+            />
+            <label htmlFor="email">Email:</label>
+          </div>
+
+          <h4 className="text-italic mb-0">Will you be attending?</h4>
+
+          <div className="input-group radio">
+            <input
+              id="radio1"
+              name="rsvp"
+              type="radio"
+              required
+              onChange={this._handleChange}
+              value="accepted"
+            />
+            <label htmlFor="radio1">Yes, with pleasure!</label>
+          </div>
+
+          <div className="input-group radio">
+            <input
+              id="radio2"
+              name="rsvp"
+              type="radio"
+              className="radio-decline"
+              required
+              onChange={this._handleChange}
+              value="declined"
+            />
+            <label htmlFor="radio2" className="label-decline">
+              No, I'll celebrate from afar.
+            </label>
+          </div>
+
+          {this.state.rsvp === "accepted" && (
             <div className="control">
-              <input
-                className="font-raleway text-uppercase text-italic letter-spacing-1 f-1"
-                type="text"
-                name="firstName"
-                placeholder="First name"
-                required
-                id="firstName"
-                onChange={this._handleChange}
-              />
-              <label htmlFor="firstName">First name:</label>
-            </div>
-
-            <div className="control">
-              <input
-                className="font-raleway text-uppercase text-italic letter-spacing-1 f-1"
-                type="text"
-                name="lastName"
-                placeholder="Last name"
-                id="lastName"
-                required
-                onChange={this._handleChange}
-              />
-              <label htmlFor="lastName">Last name:</label>
-            </div>
-
-            <div className="control">
-              <input
-                className="font-raleway text-uppercase text-italic letter-spacing-1 f-1"
-                type="text"
-                name="email"
-                placeholder="Email"
-                id="email"
-                required
-                onChange={this._handleChange}
-              />
-              <label htmlFor="email">Email:</label>
-            </div>
-
-            <h4 className="text-italic mb-0">Will you be attending?</h4>
-
-            <div className="input-group radio">
-              <input
-                id="radio1"
-                name="rsvp"
-                type="radio"
-                required
-                onChange={this._handleChange}
-                value="accepted"
-              />
-              <label htmlFor="radio1">Yes, with pleasure!</label>
-            </div>
-
-            <div className="input-group radio">
-              <input
-                id="radio2"
-                name="rsvp"
-                type="radio"
-                className="radio-decline"
-                required
-                onChange={this._handleChange}
-                value="declined"
-              />
-              <label htmlFor="radio2" className="label-decline">
-                No, I'll celebrate from afar.
-              </label>
-            </div>
-
-            {this.state.rsvp === "accepted" && <div className="control">
               <textarea
                 className="font-raleway letter-spacing-1 f-1 message dietary-restrictions"
                 type="text"
@@ -170,29 +170,28 @@ class RSVP extends React.Component {
                 onChange={this._handleChange}
               />
               <label htmlFor="message">Any dietary restrictions?</label>
-            </div>}
-
-            <div className="control">
-              <textarea
-                className="font-raleway letter-spacing-1 f-1 message"
-                type="text"
-                name="message"
-                placeholder="Leave us a message"
-                id="message"
-                onChange={this._handleChange}
-              />
-              <label htmlFor="message">Message:</label>
             </div>
+          )}
 
+          <div className="control">
+            <textarea
+              className="font-raleway letter-spacing-1 f-1 message"
+              type="text"
+              name="message"
+              placeholder="Leave us a message"
+              id="message"
+              onChange={this._handleChange}
+            />
+            <label htmlFor="message">Message:</label>
+          </div>
 
-            <button
-              className="button mb-40 font-raleway text-uppercase"
-              type="submit"
-            >
-              Submit
-            </button>
-          </form>
-        </div>
+          <button
+            className="button mb-40 font-raleway text-uppercase"
+            type="submit"
+          >
+            Submit
+          </button>
+        </form>
       </div>
     );
   }

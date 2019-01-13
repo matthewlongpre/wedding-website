@@ -166,7 +166,7 @@ class App extends React.Component {
                               render={() => (
                                 <Home
                                   backgroundsLoaded={backgroundsLoaded}
-                                  backgroundImage={`url('${homeBGUrl}')`}
+                                  backgroundImage={homeBGUrl}
                                   svgLoaded={() => this.svgLoaded()}
                                 />
                               )}
@@ -182,8 +182,8 @@ class App extends React.Component {
                               path="/location"
                               render={props => (
                                 <Location
-                                backgroundsLoaded={backgroundsLoaded}
-                                  backgroundImage={`url('${locationBGUrl}')`}
+                                  backgroundsLoaded={backgroundsLoaded}
+                                  backgroundImage={locationBGUrl}
                                 />
                               )}
                               key="location"
@@ -194,7 +194,7 @@ class App extends React.Component {
                               render={props => (
                                 <Gifts
                                   backgroundsLoaded={backgroundsLoaded}
-                                  backgroundImage={`url('${giftsBGUrl}')`}
+                                  backgroundImage={giftsBGUrl}
                                 />
                               )}
                               key="gifts"
