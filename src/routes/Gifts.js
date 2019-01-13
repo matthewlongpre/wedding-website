@@ -3,12 +3,11 @@ import FadeIn from "./../components/styled-components/FadeIn";
 import PageBackground from "../components/styled-components/PageBackground";
 
 const Gifts = props => {
-  const bg = { backgroundImage: props.backgroundImage };
-
+  const { backgroundImage, backgroundsLoaded } = props;
   return (
-    <FadeIn loaded={props.backgroundsLoaded}>
+    <FadeIn loaded={backgroundsLoaded}>
       <PageBackground
-        style={bg}
+        backgroundImage={backgroundImage}
         className={`w-100 h-100 flex flex-direction-column justify-content-center align-items-center background-cover`}
       />
       <div className="page-content p-40 position-relative flex flex-direction-column justify-content-center align-items-center">

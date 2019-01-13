@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
 const PageBackground = styled.div`
+
+  ${({ backgroundImage }) => backgroundImage && `
+    background-image: url('${backgroundImage}');
+  `}
+
   background-repeat: no-repeat;
   background-position: center center;
   transition: background-position 0.6s cubic-bezier(0.22, 0.7, 0.53, 0.96);

@@ -8,12 +8,10 @@ import FadeIn from "../components/styled-components/FadeIn";
 import PageBackground from "../components/styled-components/PageBackground";
 
 const Home = props => {
-  const bg = { backgroundImage: props.backgroundImage };
-
   return (
     <FadeIn loaded={props.backgroundsLoaded}>
       <PageBackground
-        style={bg}
+        backgroundImage={props.backgroundImage}
         className={`bg-1 page-home w-100 h-100 flex flex-direction-column justify-content-center align-items-center`}
       />
       <div className="page-content p-40 position-relative flex flex-direction-column justify-content-center align-items-center">

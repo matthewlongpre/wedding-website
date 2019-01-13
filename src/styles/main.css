@@ -380,12 +380,6 @@ nav li a {
   background-size: cover;
 }
 
-.page-background {
-  background-repeat: no-repeat;
-  background-position: center center;
-  transition: background-position .6s cubic-bezier(.22, .7, .53, .96);
-}
-
 .bg-1 {
   background-size: cover;
 }
@@ -400,19 +394,6 @@ nav li a {
   .bg-1 {
     background-position: -37vw center;
   }
-}
-
-.page-background::before {
-  content: "";
-  background-color: rgba(0, 0, 0, 0.3);
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
 }
 
 .bg-5 {
@@ -491,7 +472,7 @@ iframe.google-map {
 
 @media (max-width: 400px) {
 
-  .heading--fort-common {
+  .f-3 {
     font-size: 2rem;
   }
 

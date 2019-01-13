@@ -23,7 +23,6 @@ class Location extends Component {
       mapLoaded: false
     };
 
-    this.bg = { backgroundImage: props.backgroundImage };
   }
 
   handleMapChange = map => {
@@ -43,12 +42,12 @@ class Location extends Component {
 
   render() {
     const { mapSrc, mapName, mapLoaded } = this.state;
-    const { backgroundsLoaded } = this.props;
+    const { backgroundsLoaded, backgroundImage } = this.props;
 
     return (
       <FadeIn loaded={backgroundsLoaded}>
         <PageBackground
-          style={this.bg}
+          backgroundImage={backgroundImage}
           className={`w-100 h-100 flex flex-direction-column justify-content-center align-items-center background-cover`}
         />
         <div className="page-content page-content-wide pt-100 w-100 position-relative flex flex-direction-column justify-content-center align-items-center">
