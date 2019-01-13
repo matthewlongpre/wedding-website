@@ -387,14 +387,14 @@ nav li a {
   margin: auto;
 }
 
-.initial-load .page-home {
+/* .initial-load .page-background {
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
 
-.initial-load-complete .page-home {
+.initial-load-complete .page-background {
   opacity: 1;
-}
+} */
 
 /* .bg-1 {
   background-image: url('../assets/santorini-1.01.jpg');

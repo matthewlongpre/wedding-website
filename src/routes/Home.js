@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 import MALogo from '../assets/m+a-2.svg';
 import SVG from 'react-inlinesvg';
 
+import FadeIn from '../components/styled-components/FadeIn';
+
 const Home = (props) => {
 
   const bg = { backgroundImage: props.backgroundImage };
 
   return (
+    <FadeIn loaded={props.backgroundsLoaded}>
     <div style={bg} className={`bg-1 page-home page-background w-100 h-100 flex flex-direction-column justify-content-center align-items-center`}>
       <div className="page-content p-40 position-relative flex flex-direction-column justify-content-center align-items-center">
 
@@ -29,6 +32,7 @@ const Home = (props) => {
 
       </div>
     </div>
+    </FadeIn>
   );
 }
 
