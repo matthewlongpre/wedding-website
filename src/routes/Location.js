@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import GoogleMap from "./../components/GoogleMap";
 import FadeIn from "../components/styled-components/FadeIn";
+import Spinner from "../components/styled-components/Spinner";
 
 const maps = {
   venue:
@@ -17,7 +18,8 @@ class Location extends Component {
 
     this.state = {
       mapSrc: maps.venue,
-      mapName: "venue"
+      mapName: "venue",
+      mapLoaded: false
     };
 
     this.bg = { backgroundImage: props.backgroundImage };
@@ -25,13 +27,21 @@ class Location extends Component {
 
   handleMapChange = map => {
     this.setState({
+      mapLoaded: false,
       mapSrc: maps[map],
       mapName: map
     });
   };
 
+  handleMapLoad = () => {
+    console.log("Map loaded!");
+    this.setState({
+      mapLoaded: true
+    });
+  };
+
   render() {
-    const { mapSrc, mapName } = this.state;
+    const { mapSrc, mapName, mapLoaded } = this.state;
     const { backgroundsLoaded } = this.props;
 
     return (
@@ -41,7 +51,7 @@ class Location extends Component {
           className={`page-background w-100 h-100 flex flex-direction-column justify-content-center align-items-center background-cover`}
         >
           <div className="page-content page-content-wide pt-100 w-100 position-relative flex flex-direction-column justify-content-center align-items-center">
-            <h2 className="font-blithe m-0 f-3 text-center">The Fort Common</h2>
+            <h2 className="font-blithe m-0 f-3 text-center heading--fort-common">The Fort Common</h2>
             <h3 className="text-italic text-center">
               1017 Blanshard St, Victoria, BC
             </h3>
@@ -71,7 +81,12 @@ class Location extends Component {
                 Hotels
               </button>
             </div>
-            <GoogleMap map={mapSrc} />
+            <div className="w-100 position-relative flex align-items-center justify-content-center">
+              {!mapLoaded && <Spinner />}
+              <FadeIn loaded={mapLoaded} className="w-100">
+                <GoogleMap map={mapSrc} handleMapLoad={this.handleMapLoad} />
+              </FadeIn>
+            </div>
           </div>
         </div>
       </FadeIn>
