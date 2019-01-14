@@ -34,7 +34,6 @@ class Location extends Component {
   };
 
   handleMapLoad = () => {
-    console.log("Map loaded!");
     this.setState({
       mapLoaded: true
     });
@@ -45,10 +44,11 @@ class Location extends Component {
     const { backgroundsLoaded, backgroundImage } = this.props;
 
     return (
-      <FadeIn loaded={backgroundsLoaded}>
+      <div>
         <PageBackground
+          backgroundsLoaded={backgroundsLoaded}
           backgroundImage={backgroundImage}
-          className={`w-100 h-100 flex flex-direction-column justify-content-center align-items-center background-cover`}
+          className={`bg-4 page-background w-100 h-100 flex flex-direction-column justify-content-center align-items-center background-cover`}
         />
         <div className="page-content page-content-wide pt-100 w-100 position-relative flex flex-direction-column justify-content-center align-items-center">
           <h2 className="font-blithe m-0 f-3 text-center heading--fort-common">
@@ -90,7 +90,7 @@ class Location extends Component {
             </FadeIn>
           </div>
         </div>
-      </FadeIn>
+      </div>
     );
   }
 }

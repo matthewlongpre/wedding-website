@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const PageBackground = styled.div`
 
-  ${({ backgroundImage }) => backgroundImage && `
+  ${({ backgroundsLoaded, backgroundImage }) => backgroundsLoaded && `
     background-image: url('${backgroundImage}');
   `}
 
@@ -14,7 +14,7 @@ const PageBackground = styled.div`
   bottom: 0px;
   left: 0px;
   right: 0px;
-  z-index: -1;
+  z-index: 0;
   transform: translateZ(0);
   pointer-events: none;
 
@@ -30,7 +30,6 @@ const PageBackground = styled.div`
     left: 0;
     margin: auto;
   }
-
 `;
 
 export default PageBackground;
