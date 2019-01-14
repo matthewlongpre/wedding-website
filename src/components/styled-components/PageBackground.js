@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
+// ${({ backgroundImage }) => backgroundImage && `
+// background-image: url('${backgroundImage}');
+// `}
+
+
 const PageBackground = styled.div`
 
-  ${({ backgroundImage }) => backgroundImage && `
-    background-image: url('${backgroundImage}');
-  `}
+
 
   background-repeat: no-repeat;
   background-position: center center;

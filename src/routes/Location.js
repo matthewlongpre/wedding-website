@@ -48,7 +48,7 @@ class Location extends Component {
       <FadeIn loaded={backgroundsLoaded}>
         <PageBackground
           backgroundImage={backgroundImage}
-          className={`w-100 h-100 flex flex-direction-column justify-content-center align-items-center background-cover`}
+          className={`bg-4 w-100 h-100 flex flex-direction-column justify-content-center align-items-center background-cover`}
         />
         <div className="page-content page-content-wide pt-100 w-100 position-relative flex flex-direction-column justify-content-center align-items-center">
           <h2 className="font-blithe m-0 f-3 text-center heading--fort-common">

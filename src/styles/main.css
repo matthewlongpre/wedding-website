@@ -396,7 +396,24 @@ nav li a {
   }
 }
 
+.bg-1 {
+  background-image: url('../assets/santorini-1.01.jpg');
+}
+
+.bg-2 {
+  background-image: url('../assets/santorini-2.jpg');
+}
+
+.bg-3 {
+  background-image: url('../assets/santorini-3.0.1.jpg');
+}
+
+.bg-4 {
+  background-image: url('../assets/fort-common-3.jpg');
+}
+
 .bg-5 {
+  background-image: url('../assets/ferris-wheel.jpg');
   background-size: cover;
 }
 
