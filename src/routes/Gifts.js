@@ -1,5 +1,4 @@
 import React from "react";
-import FadeIn from "./../components/styled-components/FadeIn";
 import PageBackground from "../components/styled-components/PageBackground";
 
 const Gifts = props => {

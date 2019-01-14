@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 
 import MALogo from "../assets/m+a-2.svg";
 import SVG from "react-inlinesvg";
-
-import FadeIn from "../components/styled-components/FadeIn";
 import PageBackground from "../components/styled-components/PageBackground";
 
 const Home = props => {

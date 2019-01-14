@@ -34,7 +34,6 @@ class Location extends Component {
   };
 
   handleMapLoad = () => {
-    console.log("Map loaded!");
     this.setState({
       mapLoaded: true
     });
