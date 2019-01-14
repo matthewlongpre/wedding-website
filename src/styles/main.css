@@ -107,6 +107,7 @@ body {
   padding-right: 16vw;
   width: 100vw;
   height: 100vh;
+  -webkit-transform: translate3d(0,0,0);
 }
 
 @media (min-width: 1366px) {
@@ -380,6 +381,33 @@ nav li a {
   background-size: cover;
 }
 
+/* .page-background {
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: background-position 0.6s cubic-bezier(0.22, 0.7, 0.53, 0.96);
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: -1;
+  transform: translateZ(0);
+  pointer-events: none;
+}
+
+.page-background::before {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+} */
+
 .bg-1 {
   background-size: cover;
 }
@@ -396,7 +424,7 @@ nav li a {
   }
 }
 
-.bg-1 {
+/* .bg-1 {
   background-image: url('../assets/santorini-1.01.jpg');
 }
 
@@ -415,7 +443,7 @@ nav li a {
 .bg-5 {
   background-image: url('../assets/ferris-wheel.jpg');
   background-size: cover;
-}
+} */
 
 .button {
   min-height: 60px;

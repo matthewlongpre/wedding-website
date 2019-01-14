@@ -8,11 +8,13 @@ import FadeIn from "../components/styled-components/FadeIn";
 import PageBackground from "../components/styled-components/PageBackground";
 
 const Home = props => {
+  const { backgroundImage, backgroundsLoaded } = props;
   return (
-    <FadeIn loaded={props.backgroundsLoaded}>
+    <div>
       <PageBackground
-        backgroundImage={props.backgroundImage}
-        className={`bg-1 page-home w-100 h-100 flex flex-direction-column justify-content-center align-items-center`}
+        backgroundsLoaded={backgroundsLoaded}
+        backgroundImage={backgroundImage}
+        className={`bg-1 page-background page-home w-100 h-100 flex flex-direction-column justify-content-center align-items-center`}
       />
       <div className="page-content p-40 position-relative flex flex-direction-column justify-content-center align-items-center">
         <SVG
@@ -34,7 +36,7 @@ const Home = props => {
           RSVP
         </Link>
       </div>
-    </FadeIn>
+    </div>
   );
 };
 
