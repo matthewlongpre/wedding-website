@@ -16,9 +16,11 @@ import RSVP from "./routes/RSVP";
 import Admin from "./routes/Admin";
 import "./styles/main.css";
 
-import homeBGUrl from "./assets/santorini-1.01.jpg";
-import giftsBGUrl from "./assets/santorini-3.0.1.jpg";
-import locationBGUrl from "./assets/fort-common-3.jpg";
+const assetURL = "https://res.cloudinary.com/matt-amee/image/upload/q_auto:best";
+
+const homeBGUrl = `${assetURL}/v1547504292/matt-amee/santorini-1.01.5fdb4660.jpg`;
+const giftsBGUrl = `${assetURL}/v1547504289/matt-amee/santorini-3.0.1.0d58dbf3.jpg`;
+const locationBGUrl = `${assetURL}/v1547504286/matt-amee/fort-common-3.0df6cb90.jpg`;
 
 class App extends React.Component {
   constructor(props) {
@@ -66,7 +68,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log("ComponentDidMount");
     const bgs = [
       this.loadImage(homeBGUrl),
       this.loadImage(locationBGUrl),
@@ -76,7 +77,6 @@ class App extends React.Component {
   }
 
   setBackgroundImagesLoaded = () => {
-    console.log("Image promises are complete")
     this.setState({
         backgroundsLoaded: true
     });
@@ -119,12 +119,9 @@ class App extends React.Component {
     return new Promise((resolve, reject) => {
       const image = new Image();
       image.src = url;
-      console.log(image.complete);
       image.onload = () => {
         if (image.complete) {
           resolve(image);
-        } else {
-          console.log("image not complete");
         }
       };
     });
