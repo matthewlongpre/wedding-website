@@ -18,18 +18,16 @@ class RSVP extends React.Component {
       message: ""
     };
 
-    this._handleChange = this._handleChange.bind(this);
-    this._handleSubmit = this._handleSubmit.bind(this);
     this.databaseRef = firebase.database().ref("rsvps");
   }
 
-  _handleChange(event) {
+  _handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
   }
 
-  _handleSubmit(event) {
+  _handleSubmit = (event) => {
     event.preventDefault();
     this._openFormModal();
     this._submitRSVP(this.state);
