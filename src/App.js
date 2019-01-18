@@ -13,7 +13,6 @@ import Details from "./routes/Details";
 import Location from "./routes/Location";
 import Gifts from "./routes/Gifts";
 import RSVP from "./routes/RSVP";
-import Admin from "./routes/Admin";
 import "./styles/main.css";
 
 const assetURL = "https://res.cloudinary.com/matt-amee/image/upload/q_auto:best";
@@ -220,7 +219,6 @@ class App extends React.Component {
                               )}
                               key="rsvp"
                             />
-                            <Route exact path="/admin" component={Admin} />
                             <Route
                               key="not-found"
                               render={() => (
