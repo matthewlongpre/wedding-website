@@ -7,7 +7,7 @@ const Details = () => {
   return (
     <div>
       <PageBackground />
-      <div className="page-content pt-100 position-relative">
+      <div className="page-content pt-100 position-relative pb-80 h-min-content">
         <Notes />
         <Timeline />
       </div>

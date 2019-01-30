@@ -4,7 +4,7 @@ const MainWrapper = (props) => {
   const { location: { pathname } } = props;
 
   let shouldScroll = false;
-  if (pathname === "/details/" || pathname === "/rsvp/" || pathname === "/location/") {
+  if (pathname === "/details/" || pathname === "/rsvp/" || pathname === "/location/" || pathname === "/our-story/") {
     shouldScroll = true;
   }
 

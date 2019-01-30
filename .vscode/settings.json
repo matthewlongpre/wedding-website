@@ -1,8 +1,6 @@
 {
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
-  "editor.fontFamily": "FiraFlott",
-  "editor.fontLigatures": true,
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {

@@ -10,6 +10,9 @@ const Nav = (props) => (
       <NavLink exact={true} activeClassName='is-active' to="/details/">Details</NavLink>
     </li>
     <li>
+      <NavLink exact={true} activeClassName='is-active' to="/our-story/">Our Story</NavLink>
+    </li>
+    <li>
       <NavLink exact={true} activeClassName='is-active' to="/location/">Location</NavLink>
     </li>
     <li>
