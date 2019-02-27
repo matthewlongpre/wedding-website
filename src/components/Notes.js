@@ -16,8 +16,8 @@ const Notes = () => {
       <h4 className="text-italic">A buffet dinner will be served</h4>
       <p>Please let us know if you have any dietary restrictions and we will try our best to accommodate.</p>
 
-      <h4 className="text-italic">Special cocktail</h4>
-      <p>Everyone gets a special cocktail served to start off cocktail hour - after that there will be table wine with dinner and a cash/card bar. Bring some cash for after dinner.</p>
+      <h4 className="text-italic">Bevvies and Cocktails</h4>
+      <p>Everyone will get a delicious cocktail to kick off cocktail hour - after that there will be table wine with dinner and a cash bar. Have fun and drink responsibly!</p>
 
     </div>
   );
