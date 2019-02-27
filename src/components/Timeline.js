@@ -42,7 +42,7 @@ const TimelineItem = (props) => {
   const { time, title, description, id } = props.data;
 
   return (
-    <li>
+    <li key={id}>
       <div className="time">
         <span className="text-uppercase text-italic text-right">{time}</span>
       </div>
