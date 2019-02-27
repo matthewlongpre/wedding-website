@@ -78,7 +78,7 @@ class RSVP extends React.Component {
       );
     }
     return (
-      <div className="page-content w-100 pt-100 position-relative text-center">
+      <div className="page-content w-100 pt-100 position-relative text-center pb-80 h-min-content">
         <SVG className="ma-logo rsvp" src={MALogo} cacheGetRequests />
 
         <form

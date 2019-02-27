@@ -12,7 +12,7 @@ const timelineData = [
     id: 2,
     time: '4:30 pm',
     title: 'Cocktails',
-    description: 'Enjoy drinks & appetizers'
+    description: 'Enjoy drinks & snacks'
   },
   {
     id: 3,
