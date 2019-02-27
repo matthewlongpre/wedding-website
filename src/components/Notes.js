@@ -17,7 +17,7 @@ const Notes = () => {
       <p>Please let us know if you have any dietary restrictions on the RSVP form and we will try our best to accommodate.</p>
 
       <h4 className="text-italic">Bevvies and Cocktails</h4>
-      <p>Everyone will get a delicious cocktail to kick off cocktail hour - after that there will be table wine with dinner and a cash bar. Have fun and drink responsibly!</p>
+      <p>Everyone will get a delicious cocktail to kick off cocktail hour - after that there will be table wine with dinner and a cash/card bar. Have fun and drink responsibly!</p>
 
     </div>
   );
