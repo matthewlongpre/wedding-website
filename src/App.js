@@ -13,6 +13,8 @@ import Details from "./routes/Details";
 import Location from "./routes/Location";
 import Gifts from "./routes/Gifts";
 import RSVP from "./routes/RSVP";
+import Bio from "./routes/Bio";
+
 import "./styles/main.css";
 
 const assetURL = "https://res.cloudinary.com/matt-amee/image/upload/q_auto:best";
@@ -148,7 +150,7 @@ class App extends React.Component {
               <Route
                 render={({ location }) => (
                   <MainWrapper location={location}>
-                    <div>
+                    <>
                       <TransitionGroup component={null}>
                         <CSSTransition
                           key={location.key}
@@ -172,6 +174,11 @@ class App extends React.Component {
                               exact
                               path="/details"
                               render={props => <Details {...props} />}
+                            />
+                            <Route
+                              exact
+                              path="/our-story"
+                              render={props => <Bio {...props} />}
                             />
                             <Route
                               exact
@@ -231,7 +238,7 @@ class App extends React.Component {
                           </Switch>
                         </CSSTransition>
                       </TransitionGroup>
-                    </div>
+                    </>
                   </MainWrapper>
                 )}
               />
