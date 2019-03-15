@@ -199,3 +199,9 @@ textarea.message {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
+.kids-only {
+  background: #2f3642;
+  padding: 20px;
+  font-weight: 300;
+}
