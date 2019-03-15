@@ -81,6 +81,7 @@ class RSVP extends React.Component {
       <div className="page-content w-100 pt-100 position-relative text-center pb-80 h-min-content">
         <SVG className="ma-logo rsvp" src={MALogo} cacheGetRequests />
 
+
         <form
           className="form float-label text-left"
           id="intro-form"
@@ -89,6 +90,8 @@ class RSVP extends React.Component {
           <h4 className="text-italic text-center">
             Please fill out this form per individual guest.
           </h4>
+          <p className="kids-only">For those with little ones, we are planning for this to be an adult-only event, with the exception of close family. Please plan on making this your date night out!</p>
+
 
           <div className="control">
             <input
