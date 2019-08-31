@@ -21,7 +21,7 @@ const timelineData = [
   },
   {
     id: 4,
-    time: '8:45 pm',
+    time: '9:00 pm',
     title: 'Dancing'
   },
   {
