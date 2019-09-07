@@ -10,6 +10,9 @@ const Notes = () => {
       <h4 className="text-italic">The ceremony will begin at 4:00pm sharp</h4>
       <p>Please arrive with enough time to find parking and be seated by 3:45pm. There are several parkades and street parking nearby (which is free after 6pm). <br /><Link to="/location">See parking information here</Link></p>
 
+      <h4 className="text-italic">Entrance to the venue</h4>
+      <p>Please enter the ceremony venue from the <strong>Blanshard St entrance</strong>.</p>
+
       <h4 className="text-italic">Outdoor ceremony/reception</h4>
       <p>The venue is an outdoor space, so you might want to bring a jacket or sweater for when it cools off in the evening (although we are certain the dancing will keep us nice and toasty all night long).</p>
 
